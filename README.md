@@ -8,6 +8,7 @@ Copyright 2023. thmchit All rights reserved.
 
 ## authors
 김준이, 김정환, 김래환
++ 김정우 (이름을 지어줌)
 
 ---
 ## specific features
