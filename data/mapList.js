@@ -35,6 +35,23 @@ const mapList = [
                         ''
                     ]
                 ]
+            }),
+            competitive: new Chart({
+                difficulty: 3,
+                lanes: [
+                    [
+                        '',
+                        ''
+                    ],
+                    [
+                        '',
+                        ''
+                    ],
+                    [
+                        '',
+                        ''
+                    ]
+                ]
             })
         }
     })
