@@ -9,6 +9,7 @@ body {
 
 #monitor {
     background-color: #121212;
+
     font-weight: bold;
     color: #eeeeee;
 }
@@ -16,6 +17,8 @@ body {
     #monitor {
         width: 100vw;
         height: 100vw;
+
+        font-size: 2.5vw;
 
         position: absolute;
         top: calc(50vh - 50vw);
@@ -25,6 +28,8 @@ body {
     #monitor {
         width: 100vh;
         height: 100vh;
+
+        font-size: 2.5vh;
 
         position: absolute;
         left: calc(50vw - 50vh);

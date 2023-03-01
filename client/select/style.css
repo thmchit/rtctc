@@ -20,17 +20,69 @@
 }
 
 .album {
+    background-size: cover;
     border-radius: 50%;
+    filter: blur(2px);
+    opacity: 0.5;
+
+    position: absolute;
+}
+.album.current {
+    filter: none;
+    opacity: 1;
+
+    animation: 10s linear 0 rotation;
+    animation-iteration-count: infinite;
 }
 @media (max-aspect-ratio: 1/1) {
     .album {
-        width: 60vw;
-        height: 60vw;
+        width: 40vw;
+        height: 40vw;
+
+        top: 30vw;
+    }
+    .album.current {
+        width: 50vw;
+        height: 50vw;
+
+        top: 25vw;
+        left: 25vw;
     }
 }
 @media (min-aspect-ratio: 1/1) {
     .album {
-        width: 60vh;
-        height: 60vh;
+        width: 40vh;
+        height: 40vh;
+
+        top: 30vh;
+    }
+    .album.current {
+        width: 50vh;
+        height: 50vh;
+
+        top: 25vh;
+        left: 25vh;
+    }
+}
+@keyframes rotation {
+    0% { rotate: 0; }
+    100% { rotate: 360deg; }
+}
+
+.description {
+    width: 100%;
+
+    text-align: center;
+
+    position: relative;
+}
+@media (max-aspect-ratio: 1/1) {
+    .description {
+        top: 30vw;
+    }
+}
+@media (min-aspect-ratio: 1/1) {
+    .description {
+        top: 30vh;
     }
 }
