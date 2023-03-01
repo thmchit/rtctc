@@ -1,0 +1,26 @@
+.select {
+    position: absolute;
+    bottom: 10px;
+}
+.previous {
+    right: calc(100% - 10px);
+}
+.next {
+    left: calc(100% - 10px);
+}
+
+.album {
+    border-radius: 50%;
+}
+@media (max-aspect-ratio: 1/1) {
+    .album {
+        width: 60vw;
+        height: 60vw;
+    }
+}
+@media (min-aspect-ratio: 1/1) {
+    .album {
+        width: 60vh;
+        height: 60vh;
+    }
+}

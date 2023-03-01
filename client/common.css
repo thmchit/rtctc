@@ -9,6 +9,7 @@ body {
 
 #monitor {
     background-color: #121212;
+    font-weight: bold;
     color: #eeeeee;
 }
 @media (max-aspect-ratio: 1/1) {
