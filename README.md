@@ -28,7 +28,7 @@ Copyright 2023. thmchit All rights reserved.
 
 가 있음
 
-레인 중간에 트랜스포머
+레인 중간에 트랜스포머 
 
 * 포탈(노트 다른 레인으로 이동)
 * 거울(노트 반대 방향으로 반사)
