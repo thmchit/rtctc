@@ -68,3 +68,5 @@ const mapList = [
         }
     })
 ]
+
+export { mapList }
