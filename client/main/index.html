@@ -7,9 +7,15 @@
     <title>리;듬칫듬칫</title>
     <link href="./../common.css" rel="stylesheet">
     <link href="./style.css" rel="stylesheet">
+    <script>
+        function moveToSelect() {
+            window.location.href = './../select/index.html'
+        }
+    </script>
 </head>
-<body>
+<body onkeydown="moveToSelect()">
     <div id="monitor">
+        <!--monitor 내의 다른 모든 element는 반드시 common-monitor 이후에 있어야함-->
         <div class="common-monitor"></div>
         <div class="common-monitor"></div>
     </div>
