@@ -7,16 +7,22 @@ body {
     background-color: #121212;
 }
 
-@media (width <= height) {
+@media (max-aspect-ratio: 1/1) {
     #monitor {
         width: 100vw;
         height: 100vw;
+
+        position: absolute;
+        top: calc(50vh - 50vw);
     }
 }
 
-@media (width > height) {
+@media (min-aspect-ratio: 1/1) {
     #monitor {
         width: 100vh;
         height: 100vh;
+
+        position: absolute;
+        left: calc(50vw - 50vh);
     }
 }
