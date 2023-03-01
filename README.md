@@ -44,7 +44,6 @@ Copyright 2023. thmchit All rights reserved.
 그리고 콤보가 표시됨
 
 ## dev rules
-(아직 정해진건 아님, 김준이가 임의로 정함)
 1. 4 space indent
 2. for문 제외하고는 세미콜론 생략
 3. require 대신 import 사용
