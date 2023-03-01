@@ -2,11 +2,21 @@
     position: absolute;
     bottom: 10px;
 }
-.previous {
-    right: calc(100% - 10px);
+@media (max-aspect-ratio: 1/1) {
+    .previous {
+        right: 90vw;
+    }
+    .next {
+        left: 90vw;
+    }
 }
-.next {
-    left: calc(100% - 10px);
+@media (min-aspect-ratio: 1/1) {
+    .previous {
+        right: 90vh;
+    }
+    .next {
+        left: 90vh;
+    }
 }
 
 .album {
