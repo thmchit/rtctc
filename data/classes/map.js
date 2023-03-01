@@ -8,7 +8,7 @@ export class Map {
         chart = {
             /** @description lanes: length 6 Array, each has 2 String*/
             cooperative: new Chart(),
-            /** @description lanes: length 3 Array, each has 2 String*/
+            /** @description lanes: length 6 Array, each has 2 SAME String*/
             competitive: new Chart()
         }
     } = {}) {
