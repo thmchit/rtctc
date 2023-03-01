@@ -7,7 +7,7 @@
 Copyright 2023. thmchit All rights reserved.
 
 ## authors
-김준이, 김정환, 김래환
+김준이, 김정환, 잘생긴 김래환
 
 ---
 ## specific features
