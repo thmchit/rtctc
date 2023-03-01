@@ -2,3 +2,21 @@
     margin: 0;
     padding: 0;
 }
+
+body {
+    background-color: #121212;
+}
+
+@media (width <= height) {
+    #monitor {
+        width: 100vw;
+        height: 100vw;
+    }
+}
+
+@media (width > height) {
+    #monitor {
+        width: 100vh;
+        height: 100vh;
+    }
+}
