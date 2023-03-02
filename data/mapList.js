@@ -6,6 +6,7 @@ const mapList = [
         name: 'LOVE DIVE',
         artist: 'IVE',
         bpm: 118,
+        beatSplit: 8,
         chart: {
             cooperative: new Chart({
                 difficulty: 3,
@@ -71,6 +72,7 @@ const mapList = [
         name: 'don\'t fight the music',
         artist: 'Sekai',
         bpm: 200,
+        beatSplit: 8,
         chart: {
             cooperative: new Chart({
                 difficulty: 3,
@@ -136,6 +138,7 @@ const mapList = [
         name: '염라',
         artist: '달의 하루',
         bpm: 132,
+        beatSplit: 8,
         chart: {
             cooperative: new Chart({
                 difficulty: 3,

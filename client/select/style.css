@@ -1,21 +1,56 @@
 .select {
+    text-align: center;
+
     position: absolute;
     bottom: 10px;
 }
+.mode {
+    bottom: 0;
+}
+.cooperative {
+    background-color: #38BAB7;
+}
+.competitive {
+    background-color: #72A9F1;
+}
 @media (max-aspect-ratio: 1/1) {
+    .select {
+        width: 15vw;
+    }
     .previous {
-        right: 90vw;
+        left: 5vw;
     }
     .next {
-        left: 90vw;
+        left: 80vw;
+    }
+    .mode {
+        height: 5vw;
+    }
+    .cooperative {
+        left: 35vw;
+    }
+    .competitive {
+        left: 50vw;
     }
 }
 @media (min-aspect-ratio: 1/1) {
+    .select {
+        width: 15vh;
+    }
     .previous {
-        right: 90vh;
+        right: 80vh;
     }
     .next {
-        left: 90vh;
+        left: 80vh;
+    }
+    .mode {
+        height: 5vh;
+    }
+    .cooperative {
+        left: 35vh;
+    }
+    .competitive {
+        left: 50vh;
     }
 }
 
@@ -48,6 +83,12 @@
         top: 25vw;
         left: 25vw;
     }
+    .album.previous {
+        right: 90vw;
+    }
+    .album.next {
+        left: 90vw;
+    }
 }
 @media (min-aspect-ratio: 1/1) {
     .album {
@@ -62,6 +103,12 @@
 
         top: 25vh;
         left: 25vh;
+    }
+    .album.previous {
+        right: 90vh;
+    }
+    .album.next {
+        left: 90vh;
     }
 }
 @keyframes rotation {

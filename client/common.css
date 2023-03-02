@@ -6,6 +6,9 @@
 *:hover {
     cursor: default;
 }
+*::selection {
+    background-color: transparent;
+}
 
 body {
     background-color: #eeeeee;

@@ -2,7 +2,8 @@
 
 ## description
 2명이 함께 즐기는 협동 및 경쟁형 리듬게임!\
-정사각형 디스플레이 사용, 오락실용 리듬게임
+정사각형 디스플레이 사용, 오락실용 리듬게임\
+server.js 실행시킨 뒤 포트 80으로 접속하면 플레이 가능
 
 Copyright 2023. thmchit All rights reserved.
 

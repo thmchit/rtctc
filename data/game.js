@@ -23,6 +23,9 @@ export class Game {
     }
 
     display(index = this.#index) {
+        const hasCooperativeMode = (this.map.chart.cooperative !== undefined)
+        const hasCompetitiveMode = (this.map.chart.competitive !== undefined)
+
         const displayAlbumCover = () => {
             const albums = document.getElementsByClassName('album')
             const [ current, previous, next ]  = [ ...albums ]
@@ -36,20 +39,34 @@ export class Game {
         }
 
         const displayDescription = () => {
-            for (let description of document.getElementsByClassName('description')) {
-                let content = `${ this.map.artist } - ${ this.map.name } <br/>`
-                if(this.map.chart.competitive !== undefined) {
-                    content += `<font color='#72A9F1'>경쟁:</font> 난이도${ this.map.chart.competitive.difficulty } `
-                }
-                if(this.map.chart.cooperative !== undefined) {
-                    content += `<font color='#38BAB7'>협동:</font> 난이도${ this.map.chart.cooperative.difficulty } `
-                }
+            let content = `${ this.map.artist } - ${ this.map.name } <br/>`
+            if (hasCooperativeMode) {
+                content += `<font color='#38BAB7'>협동:</font> 난이도${ this.map.chart.cooperative.difficulty } `
+            }
+            if (hasCompetitiveMode) {
+                content += `<font color='#72A9F1'>경쟁:</font> 난이도${ this.map.chart.competitive.difficulty } `
+            }
 
+            for (let description of document.getElementsByClassName('description')) {
                 description.innerHTML = content
+            }
+        }
+
+        const displaySelectMode = () => {
+            for (let selectCoop of document.getElementsByClassName('cooperative')) {
+                selectCoop.style.display = hasCooperativeMode ? 'block' : 'none'
+            }
+            for (let selectComp of document.getElementsByClassName('competitive')) {
+                selectComp.style.display = hasCompetitiveMode ? 'block' : 'none'
             }
         }
 
         displayAlbumCover()
         displayDescription()
+        displaySelectMode()
+    }
+
+    play(mode) {
+        //아직 안 만듦
     }
 }
