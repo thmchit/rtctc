@@ -4,7 +4,7 @@
     overflow: hidden;
 }
 *:hover {
-    cursor: none;
+    cursor: default;
 }
 
 body {
