@@ -47,7 +47,8 @@ Copyright 2023. thmchit All rights reserved.
 1. 4 space indent
 2. for문 제외하고는 세미콜론 생략
 3. require 대신 import 사용
-4. 나머지는 모두 standard js style 따름\
+4. nested function은 모두 화살표 함수로, 해당 함수의 가장 위에 위치
+5. 나머지는 모두 standard js style 따름\
 https://standardjs.com/rules-kokr.html
 
 ## implementation ideas
