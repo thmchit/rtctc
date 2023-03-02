@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 body {
@@ -39,6 +40,8 @@ body {
 .cover {
     background-color: #eeeeee;
     position: absolute;
+
+    z-index: 1;
 }
 @media (max-aspect-ratio: 1/1) {
     .cover {
@@ -48,11 +51,20 @@ body {
     .first {
         top: 0;
     }
+    .second {
+        bottom: 0;
+    }
 }
 @media (min-aspect-ratio: 1/1) {
     .cover {
-        width: 100vh;
-        height: calc(50vw - 50vh);
+        width: calc(50vw - 50vh);
+        height: 100vh;
+    }
+    .first {
+        left: 0;
+    }
+    .second {
+        right: 0;
     }
 }
 
