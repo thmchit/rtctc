@@ -1,11 +1,11 @@
 import { Game } from '../../data/game.js'
 
 const game = new Game()
-window.onload = game.display()
+window.onload = game.displaySelection()
 
 window.shiftSelect = (diff) => {
     game.index += diff
-    game.display()
+    game.displaySelection()
 }
 
 window.play = (mode) => {

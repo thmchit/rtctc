@@ -22,7 +22,7 @@ export class Game {
         return mapList[this.#index]
     }
 
-    display(index = this.#index) {
+    displaySelection(index = this.#index) {
         const hasCooperativeMode = (this.map.chart.cooperative !== undefined)
         const hasCompetitiveMode = (this.map.chart.competitive !== undefined)
 
