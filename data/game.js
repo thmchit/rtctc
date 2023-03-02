@@ -7,9 +7,8 @@ export class Game {
     }
 
     static getIndex(index) {
-        if (!(0 <= index && index < mapList.length)) {
-            return mapList.length % index
-        }
+        while (index < 0) index += mapList.length
+        while (index >= mapList.length) index -= mapList.length
         return index
     }
     get index() {
@@ -40,10 +39,10 @@ export class Game {
             for (let description of document.getElementsByClassName('description')) {
                 let content = `${ this.map.artist } - ${ this.map.name } <br/>`
                 if(this.map.chart.competitive !== undefined) {
-                    content += `<font color='red'>경쟁:</font> 난이도${ this.map.chart.competitive.difficulty } `
+                    content += `<font color='#72A9F1'>경쟁:</font> 난이도${ this.map.chart.competitive.difficulty } `
                 }
                 if(this.map.chart.cooperative !== undefined) {
-                    content += `<font color='green'>협동:</font> 난이도${ this.map.chart.cooperative.difficulty } `
+                    content += `<font color='#38BAB7'>협동:</font> 난이도${ this.map.chart.cooperative.difficulty } `
                 }
 
                 description.innerHTML = content

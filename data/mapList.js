@@ -66,6 +66,136 @@ const mapList = [
                 ]
             })
         }
+    }),
+    new Map({
+        name: 'don\'t fight the music',
+        artist: 'Sekai',
+        bpm: 200,
+        chart: {
+            cooperative: new Chart({
+                difficulty: 3,
+                lanes: [
+                    [
+                        '',
+                        ''
+                    ],
+                    [
+                        '',
+                        ''
+                    ],
+                    [
+                        '',
+                        ''
+                    ],
+                    [
+                        '',
+                        ''
+                    ],
+                    [
+                        '',
+                        ''
+                    ],
+                    [
+                        '',
+                        ''
+                    ]
+                ]
+            }),
+            competitive: new Chart({
+                difficulty: 3,
+                lanes: [
+                    [
+                        '',
+                        ''
+                    ],
+                    [
+                        '',
+                        ''
+                    ],
+                    [
+                        '',
+                        ''
+                    ],
+                    [
+                        '',
+                        ''
+                    ],
+                    [
+                        '',
+                        ''
+                    ],
+                    [
+                        '',
+                        ''
+                    ]
+                ]
+            })
+        }
+    }),
+    new Map({
+        name: '염라',
+        artist: '달의 하루',
+        bpm: 132,
+        chart: {
+            cooperative: new Chart({
+                difficulty: 3,
+                lanes: [
+                    [
+                        '',
+                        ''
+                    ],
+                    [
+                        '',
+                        ''
+                    ],
+                    [
+                        '',
+                        ''
+                    ],
+                    [
+                        '',
+                        ''
+                    ],
+                    [
+                        '',
+                        ''
+                    ],
+                    [
+                        '',
+                        ''
+                    ]
+                ]
+            }),
+            competitive: new Chart({
+                difficulty: 3,
+                lanes: [
+                    [
+                        '',
+                        ''
+                    ],
+                    [
+                        '',
+                        ''
+                    ],
+                    [
+                        '',
+                        ''
+                    ],
+                    [
+                        '',
+                        ''
+                    ],
+                    [
+                        '',
+                        ''
+                    ],
+                    [
+                        '',
+                        ''
+                    ]
+                ]
+            })
+        }
     })
 ]
 
