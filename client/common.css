@@ -33,6 +33,9 @@ body {
         position: absolute;
         top: calc(50vh - 50vw);
     }
+    .title {
+        font-size: 3.5vw;
+    }
 }
 @media (min-aspect-ratio: 1/1) {
     #monitor {
@@ -43,6 +46,9 @@ body {
 
         position: absolute;
         left: calc(50vw - 50vh);
+    }
+    .title {
+        font-size: 3.5vh;
     }
 }
 

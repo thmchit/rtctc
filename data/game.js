@@ -54,16 +54,20 @@ class Game {
         }
 
         const displayDescription = () => {
-            let content = `${ this.map.artist } - ${ this.map.name } <br/>`
+            let titleContent = `${ this.map.artist } - ${ this.map.name } <br/>`
+            let difficultyContent = ''
             if (hasCooperativeMode) {
-                content += `<font color='#38BAB7'>협동:</font> 난이도${ this.map.chart.cooperative.difficulty } `
+                difficultyContent += `<font color='#38BAB7'>협동:</font> 난이도${ this.map.chart.cooperative.difficulty } `
             }
             if (hasCompetitiveMode) {
-                content += `<font color='#72A9F1'>경쟁:</font> 난이도${ this.map.chart.competitive.difficulty } `
+                difficultyContent += `<font color='#72A9F1'>경쟁:</font> 난이도${ this.map.chart.competitive.difficulty } `
             }
 
-            for (let description of document.getElementsByClassName('description')) {
-                description.innerHTML = content
+            for (let title of document.getElementsByClassName('title')) {
+                title.innerHTML = titleContent
+            }
+            for (let difficulty of document.getElementsByClassName('difficulty')) {
+                difficulty.innerHTML = difficultyContent
             }
         }
 
