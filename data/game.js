@@ -1,5 +1,5 @@
 import { mapList } from './mapList.js'
-import /*{ Howl, Howler } from*/ 'howler' //음악 관련 모듈
+// Howl and Howler is imported in html IMPORTANT
 
 class Game {
     #index
