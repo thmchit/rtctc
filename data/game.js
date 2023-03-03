@@ -82,6 +82,7 @@ class Game {
     }
     select(mode) {
         if (mode === undefined) return
+        this.mode = mode
         window.location.href = `../play/index.html?index=${ this.index }&mode=${ this.mode }`
     }
 
