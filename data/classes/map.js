@@ -8,6 +8,7 @@ export class Map {
         bpm = 0,
         /** @description 1 beat / beatSplit is the time of one note */
         beatSplit = 8,
+        volume = 1,
         chart = {
             /** @description lanes: length 6 Array, each has 2 String */
             cooperative: new Chart(),

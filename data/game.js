@@ -86,8 +86,20 @@ class Game {
         window.location.href = `../play/index.html?index=${ this.index }&mode=${ this.mode }`
     }
 
-    play(mode) {
+    play(mode = this.mode) {
         if (mode === undefined) return
+        document.body.onkeydown = null
+        
+        const playMusic = () => {
+            const music = new Howl({
+                src: [`../../data/music/${ this.map.name }.mp3`],
+                volume: this.map.volume
+            })
+
+            music.play()
+        }
+
+        playMusic()
     }
 }
 
