@@ -1,1 +1,3 @@
-import { mapList } from './../../data/mapList.js'
+import { game } from './../../data/game.js'
+
+alert(game.index)

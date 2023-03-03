@@ -1,6 +1,7 @@
 import { mapList } from './mapList.js'
+import /*{ Howl, Howler } from*/ 'howler' //음악 관련 모듈
 
-export class Game {
+class Game {
     #index
     constructor(index = 0) {
         this.#index = Game.getIndex(index)
@@ -22,7 +23,7 @@ export class Game {
         return mapList[this.#index]
     }
 
-    displaySelection(index = this.#index) {
+    displaySelection(index = this.index) {
         const hasCooperativeMode = (this.map.chart.cooperative !== undefined)
         const hasCompetitiveMode = (this.map.chart.competitive !== undefined)
 
@@ -67,6 +68,10 @@ export class Game {
     }
 
     play(mode) {
-        //아직 안 만듦
+        window.location.href = '../play/index.html'
+        alert(this.index)
     }
 }
+
+const game = new Game()
+export { game }
