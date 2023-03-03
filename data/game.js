@@ -1,13 +1,23 @@
 import { mapList } from './mapList.js'
 // Howl and Howler is imported in html (IMPORTANT)
-
 class Game {
     #index
-    constructor(index = 0) {
-        this.#index = Game.getIndex(index)
+    constructor() {
+        const url = new URL(window.location.href)
+        const params = new URLSearchParams(url.search)
+
+        if (params.get('index') !== undefined) {
+            this.#index = Game.getIndex( params.get('index') )
+            if (params.get('mode') != 'undefined') {
+                this.mode = params.get('mode')
+            }
+        } else {
+            this.#index = 0
+        }
     }
 
     static getIndex(index) {
+        index = Number(index)
         while (index < 0) index += mapList.length
         while (index >= mapList.length) index -= mapList.length
         return index
@@ -71,13 +81,13 @@ class Game {
         displaySelectMode()
     }
     select(mode) {
-        window.location.href = '../play/index.html'
+        if (mode === undefined) return
+        window.location.href = `../play/index.html?index=${ this.index }&mode=${ this.mode }`
     }
 
     play(mode) {
+        if (mode === undefined) return
     }
 }
 
-const game = new Game()
-window.game = game
-export { game }
+export { Game }

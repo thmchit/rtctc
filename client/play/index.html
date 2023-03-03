@@ -8,9 +8,9 @@
     <link href="./../common.css" rel="stylesheet">
     <link href="./style.css" rel="stylesheet">
     <script src="../../node_modules/howler/dist/howler.core.min.js" defer></script>
-    <script src="../../data/game.js" type="module" defer></script>
-    <script>
-        window.onload = () => { storage.load() }
+    <script type="module" defer>
+        import { Game } from '../../data/game.js'
+        window.game = new Game()
     </script>
 </head>
 <body>
