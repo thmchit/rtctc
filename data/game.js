@@ -1,5 +1,5 @@
 import { mapList } from './mapList.js'
-// Howl and Howler is imported in html IMPORTANT
+// Howl and Howler is imported in html (IMPORTANT)
 
 class Game {
     #index
@@ -20,9 +20,13 @@ class Game {
     }
 
     get map() {
-        return mapList[this.#index]
+        return mapList[ this.#index ]
     }
 
+    shiftSelection(diff) {
+        this.index += diff
+        this.displaySelection()
+    }
     displaySelection(index = this.index) {
         const hasCooperativeMode = (this.map.chart.cooperative !== undefined)
         const hasCompetitiveMode = (this.map.chart.competitive !== undefined)
@@ -66,12 +70,14 @@ class Game {
         displayDescription()
         displaySelectMode()
     }
+    select(mode) {
+        window.location.href = '../play/index.html'
+    }
 
     play(mode) {
-        window.location.href = '../play/index.html'
-        alert(this.index)
     }
 }
 
 const game = new Game()
+window.game = game
 export { game }

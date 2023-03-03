@@ -7,8 +7,11 @@
     <title>리;듬칫듬칫</title>
     <link href="../common.css" rel="stylesheet">
     <link href="./style.css" rel="stylesheet">
-    <script src="../../node_modules/howler/dist/howler.core.min.js"></script>
-    <script src="./script.js" type="module"></script>
+    <script src="../../node_modules/howler/dist/howler.core.min.js" defer></script>
+    <script src="../../data/game.js" type="module" defer></script>
+    <script defer>
+        window.onload = () => { window.game.displaySelection() }
+    </script>
 </head>
 <body>
     <div class="cover first"></div>
@@ -17,17 +20,17 @@
         <!--monitor 내의 다른 모든 element는 반드시 common-monitor 이후에 있어야함-->
         <div class="common-monitor">
             <div class="description"></div>
-            <div class="select previous" onclick="shiftSelect(-1)">이전 곡</div>
-            <div class="select next" onclick="shiftSelect(1)">다음 곡</div>
-            <div class="select cooperative mode" onclick="play('cooperative')">협동</div>
-            <div class="select competitive mode" onclick="play('competitive')">경쟁</div>
+            <div class="select previous" onclick="game.shiftSelection(-1)">이전 곡</div>
+            <div class="select next" onclick="game.shiftSelection(1)">다음 곡</div>
+            <div class="select cooperative mode" onclick="game.select('cooperative')">협동</div>
+            <div class="select competitive mode" onclick="game.select('competitive')">경쟁</div>
         </div>
         <div class="common-monitor">
             <div class="description"></div>
-            <div class="select previous" onclick="shiftSelect(-1)">이전 곡</div>
-            <div class="select next" onclick="shiftSelect(1)">다음 곡</div>
-            <div class="select cooperative mode" onclick="play('cooperative')">협동</div>
-            <div class="select competitive mode" onclick="play('competitive')">경쟁</div>
+            <div class="select previous" onclick="game.shiftSelection(-1)">이전 곡</div>
+            <div class="select next" onclick="game.shiftSelection(1)">다음 곡</div>
+            <div class="select cooperative mode" onclick="game.select('cooperative')">협동</div>
+            <div class="select competitive mode" onclick="game.select('competitive')">경쟁</div>
         </div>  
         <div class="album current"></div>
         <div class="album previous"></div>
