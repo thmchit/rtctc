@@ -17,10 +17,10 @@
         line-height: 5vw;
     }
     .previous {
-        left: 5vw;
+        left: 80vw;
     }
     .next {
-        left: 80vw;
+        left: 5vw;
     }
     .mode {
         height: 5vw;
@@ -70,6 +70,10 @@
     animation: 10s linear 0 rotation;
     animation-iteration-count: infinite;
 }
+.album.decoration {
+    filter: none;
+    opacity: 1;
+}
 @media (max-aspect-ratio: 1/1) {
     .album {
         width: 40vw;
@@ -83,6 +87,15 @@
 
         top: 25vw;
         left: 25vw;
+    }
+    .album.decoration {
+        width: 47vw;
+        height: 47vw;
+
+        top: 26.25vw;
+        left: 26.25vw;
+
+        border: 0.25vw solid white;
     }
     .album.previous {
         right: 90vw;
@@ -104,6 +117,15 @@
 
         top: 25vh;
         left: 25vh;
+    }
+    .album.decoration {
+        width: 47vh;
+        height: 47vh;
+
+        top: 26.25vh;
+        left: 26.25vh;
+
+        border: 0.25vh solid white;
     }
     .album.previous {
         right: 90vh;
