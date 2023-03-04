@@ -5,6 +5,7 @@
     padding: 0;
     overflow: hidden;
     font-family: 'Poor Story', cursive;
+    box-sizing: border-box;
 }
 *:hover {
     cursor: default;
