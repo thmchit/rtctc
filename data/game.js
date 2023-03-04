@@ -1,3 +1,4 @@
+import { Note } from './classes/note.js'
 import { mapList } from './mapList.js'
 // Howl and Howler is imported in html (IMPORTANT)
 class Game {
@@ -103,7 +104,23 @@ class Game {
             music.play()
         }
 
+        const playNote = () => {
+            let noteIndex = 0
+            const noteInterval = setInterval(() => {
+                const endOfNote = (noteIndex >= this.map.chart[this.mode].lanes[0][0].length)
+                if (endOfNote) clearInterval(noteInterval)
+
+                for (let lane = 0; lane < 6; lane ++) {
+                    for (let direction = 0; direction < 2; direction ++) {
+                        Note.create( this.map.chart[this.mode].lanes[lane][direction], noteIndex )
+                    }
+                }
+                noteIndex ++
+            }, this.map.bpm / this.map.bpmSplit)
+        }
+
         playMusic()
+        playNote()
     }
 }
 
