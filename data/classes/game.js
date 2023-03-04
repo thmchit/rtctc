@@ -1,5 +1,5 @@
-import { Note } from './classes/note.js'
-import { mapList } from './mapList.js'
+import { Note } from './note.js'
+import { mapList } from '../mapList.js'
 // Howl and Howler is imported in html (IMPORTANT)
 class Game {
     #index
