@@ -5,12 +5,12 @@
 
     position: absolute;
 }
-.lane._1 { left: 5%; }
-.lane._2 { left: 20%; }
-.lane._3 { left: 35%; }
-.lane._4 { left: 50%; }
-.lane._5 { left: 65%; }
-.lane._6 { left: 80%; }
+.lane._0 { left: 5%; }
+.lane._1 { left: 20%; }
+.lane._2 { left: 35%; }
+.lane._3 { left: 50%; }
+.lane._4 { left: 65%; }
+.lane._5 { left: 80%; }
 @media (max-aspect-ratio: 1/1) {
     .lane {
         border-left: 0.3vw solid #121212;
@@ -37,7 +37,7 @@
 }
 .short.up {
     background-color: #72A9F1;
-    animation: 0.8s linear 1s up;
+    animation: 2s linear 1s up;
     bottom: -3%;
 }
 .short.down {

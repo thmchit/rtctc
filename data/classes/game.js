@@ -116,7 +116,7 @@ class Game {
                     }
                 }
                 noteIndex ++
-            }, this.map.bpm / this.map.bpmSplit)
+            }, this.map.bpm)
         }
 
         playMusic()
