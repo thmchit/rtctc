@@ -64,15 +64,24 @@
     position: absolute;
 }
 .album.current {
+    z-index: 99;
+
     filter: none;
     opacity: 1;
 
     animation: 10s linear 0 rotation;
     animation-iteration-count: infinite;
+
+    clip-path: url(#cd);
 }
-.album.decoration {
+.album.innerdecoration{
     filter: none;
-    opacity: 1;
+}
+.album.outerdecoration {
+    z-index: 100;
+
+    filter: none;
+    opacity: 0.5;
 }
 @media (max-aspect-ratio: 1/1) {
     .album {
@@ -88,12 +97,20 @@
         top: 25vw;
         left: 25vw;
     }
-    .album.decoration {
+    .album.innerdecoration {
+        width: 18vw;
+        height: 18vw;
+
+        top: 41vw;
+        left: 41vw;
+        border: 5vw solid white;
+    }
+    .album.outerdecoration {
         width: 47vw;
         height: 47vw;
 
-        top: 26.25vw;
-        left: 26.25vw;
+        top: 26.5vw;
+        left: 26.5vw;
 
         border: 0.25vw solid white;
     }
@@ -118,14 +135,22 @@
         top: 25vh;
         left: 25vh;
     }
-    .album.decoration {
+    .album.innerdecoration {
+        width: 18vh;
+        height: 18vh;
+
+        top: 41vh;
+        left: 41vh;
+        border: 5vh solid white;
+    }
+    .album.outerdecoration {
         width: 47vh;
         height: 47vh;
 
-        top: 26.25vh;
-        left: 26.25vh;
+        top: 26.5vh;
+        left: 26.5vh;
 
-        border: 0.25vh solid white;
+        border: 0.25vw solid white;
     }
     .album.previous {
         right: 90vh;

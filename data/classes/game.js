@@ -44,7 +44,7 @@ class Game {
 
         const displayAlbumCover = () => {
             const albums = document.getElementsByClassName('album')
-            const [ current, decoration, previous, next ]  = [ ...albums ]
+            const [ current, innerdecoration, outerdecoration, previous, next ]  = [ ...albums ]
 
             current.style.backgroundImage
             = `url("../../data/images/album/${ this.map.name }.png")`
