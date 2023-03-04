@@ -12,10 +12,17 @@
         import { Game } from '../../data/classes/game.js'
         window.game = new Game()
     </script>
+    <script>
+        setInterval(() => {
+            const note = document.createElement('div')
+            note.setAttribute('class', 'short down note')
+            document.getElementById('lane1').appendChild(note)
+        }, 100)
+    </script>
 </head>
 <body onkeydown="window.game.play()">
     <div id="monitor">
-        <div id="lane1" class="lane _1"><div class="short note"></div></div>
+        <div id="lane1" class="lane _1"></div>
         <div id="lane2" class="lane _2"></div>
         <div id="lane3" class="lane _3"></div>
         <div id="lane4" class="lane _4"></div>

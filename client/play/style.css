@@ -30,7 +30,20 @@
 
 .short {
     height: 3%;
+    position: absolute;
+    transition-duration: 0.5s;
+    transition-timing-function: linear;
+    z-index: 1;
+}
+.short.up {
+    background-color: #72A9F1;
+    animation: 0.8s linear 1s up;
+    bottom: -3%;
+}
+.short.down {
     background-color: #38BAB7;
+    animation: 2s linear 1s down;
+    top: -3%;
 }
 @media (max-aspect-ratio: 1/1) {
     .short {
@@ -42,5 +55,9 @@
     .short {
         border-top: 0.6vh solid #121212;
         border-bottom: 0.6vh solid #121212;
+    }
+    @keyframes down {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(100vh); }
     }
 }
