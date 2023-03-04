@@ -112,7 +112,7 @@ class Game {
 
                 for (let lane = 0; lane < 6; lane ++) {
                     for (let direction = 0; direction < 2; direction ++) {
-                        Note.create( this.map.chart[this.mode].lanes[lane][direction], noteIndex )
+                        Note.create( this.map.chart[this.mode], lane, direction, noteIndex )
                     }
                 }
                 noteIndex ++

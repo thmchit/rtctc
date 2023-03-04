@@ -3,20 +3,19 @@ export class Note {
         this.type = type
     }
     
-    static create(string, index) {
-        let type = string[index]
-
-        type = type === '*' ? 'none'
-        : type === 's' ? 'short'
-        : type === 'l' ? 'long'
-        : type
+    static create(chart, lane, direction, index) {
+        const notes = chart.lanes[lane][direction]
+        const type = notes[index] === '*' ? 'none'
+        : notes[index] === 's' ? 'short'
+        : notes[index] === 'l' ? 'long'
+        : notes[index]
 
         function createShort() {
 
         }
 
         function createLong() {
-            
+            if (index > 0 && notes[index] == 'l') return
         }
 
         switch(type) {
