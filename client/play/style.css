@@ -48,11 +48,23 @@
         border-top: 0.6vw solid #121212;
         border-bottom: 0.6vw solid #121212;
     }
+    @keyframes up {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-100vw); }
+    }
+    @keyframes down {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(100vw); }
+    }
 }
 @media (min-aspect-ratio: 1/1) {
     .short {
         border-top: 0.6vh solid #121212;
         border-bottom: 0.6vh solid #121212;
+    }
+    @keyframes up {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-100vh); }
     }
     @keyframes down {
         0% { transform: translateY(0); }

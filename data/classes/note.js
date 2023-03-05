@@ -15,10 +15,13 @@ export class Note {
             const note = document.createElement('div')
             note.setAttribute('class', `short note ${direction}`)
             document.getElementById(`lane${lane}`).appendChild(note)
+            setTimeout(() => {note.remove()}, 3000)
         }
 
         function createLong() {
             if (index > 0 && notes[index] == 'l') return
+
+
         }
 
         switch(type) {
