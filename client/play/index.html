@@ -15,6 +15,14 @@
 </head>
 <body onkeydown="window.game.play()">
     <div id="monitor">
+        <!--monitor 내의 다른 모든 element는 반드시 common-monitor 이후에 있어야함-->
+        <div class="common-monitor">
+            <div class="judgement-line"></div>
+        </div>
+        <div class="common-monitor">
+            <div class="judgement-line"></div>
+        </div>
+        
         <div id="lane0" class="lane _0"></div>
         <div id="lane1" class="lane _1"></div>
         <div id="lane2" class="lane _2"></div>

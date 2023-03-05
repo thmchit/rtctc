@@ -16,7 +16,7 @@ export class Map {
             competitive: new Chart()
         }
     } = {}) {
-        [ this.name, this.artist, this.bpm, this.beatSplit, this.chart ]
-        = [ name, artist, bpm, this.beatSplit, chart ]
+        [ this.name, this.artist, this.bpm, this.beatSplit, this.volume, this.chart ]
+        = [ name, artist, bpm, beatSplit, volume, chart ]
     }
 }

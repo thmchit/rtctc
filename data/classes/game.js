@@ -94,17 +94,9 @@ class Game {
     play(mode = this.mode) {
         if (mode === undefined) return
         document.body.onkeydown = null
-        
-        const playMusic = () => {
-            const music = new Howl({
-                src: [`../../data/music/${ this.map.name }.mp3`],
-                volume: this.map.volume
-            })
+        const period = 60000 / this.map.bpm / this.map.beatSplit
 
-            music.play()
-        }
-
-        const playNote = () => {
+        const playNote = ()  => {
             let noteIndex = 0
             const noteInterval = setInterval(() => {
                 const endOfNote = (noteIndex >= this.map.chart[this.mode].lanes[0][0].length)
@@ -116,11 +108,18 @@ class Game {
                     }
                 }
                 noteIndex ++
-            }, this.map.bpm)
+            }, period)
         }
 
-        playMusic()
-        playNote()
+        const music = new Howl({
+            src: [`../../data/music/${ this.map.name }.mp3`],
+            volume: this.map.volume * (0.5)
+        })
+
+        music.once('load', () => {
+            playNote()
+            setTimeout(() => { music.play() }, 1700 - period)
+        })
     }
 }
 
