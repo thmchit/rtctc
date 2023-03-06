@@ -91,34 +91,15 @@ class Game {
         window.location.href = `../play/index.html?index=${ this.index }&mode=${ this.mode }`
     }
 
-    executeForInput(event, execution, arg) {
-        const key = String.fromCharCode(event.keyCode)
-        for (compare in execution) {
-            if (key === compare) {
-                execution[key](arg)
-                return
-            }
-        }
-    }
-
     play(mode = this.mode) {
         if (mode === undefined) return
 
         const setInput = () => {
-            const execution = {}
-            for (let i = 0; i < 6; i ++) {
-                execution[settings.keybinds.up[i]] = (type) => {
-                    Note.judge(this.map.chart, type, i, 'up')
-                }
-                execution[settings.keybinds.down[i]] = (type) => {
-                    Note.judge(this.map.chart, type, i, 'down')
-                }
-            }
             document.body.onkeydown = (event) => {
-                this.executeForInput(event, execution, 'keydown')
+                
             }
             document.body.onkeyup = (event) => {
-                this.executeForInput(event, execution, 'keyup')
+                
             }
         }
         
