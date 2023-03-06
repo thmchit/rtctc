@@ -1,6 +1,6 @@
 import { Note } from './note.js'
 import { mapList } from '../mapList.js'
-// Howl and Howler is imported in html (IMPORTANT)
+// settings, Howl and Howler is imported in html (IMPORTANT)
 class Game {
     #index
     constructor() {
@@ -91,9 +91,37 @@ class Game {
         window.location.href = `../play/index.html?index=${ this.index }&mode=${ this.mode }`
     }
 
+    executeForInput(event, execution, arg) {
+        const key = String.fromCharCode(event.keyCode)
+        for (compare in execution) {
+            if (key === compare) {
+                execution[key](arg)
+                return
+            }
+        }
+    }
+
     play(mode = this.mode) {
         if (mode === undefined) return
-        document.body.onkeydown = null
+
+        const setInput = () => {
+            const execution = {}
+            for (let i = 0; i < 6; i ++) {
+                execution[settings.keybinds.up[i]] = (type) => {
+                    Note.judge(this.map.chart, type, i, 'up')
+                }
+                execution[settings.keybinds.down[i]] = (type) => {
+                    Note.judge(this.map.chart, type, i, 'down')
+                }
+            }
+            document.body.onkeydown = (event) => {
+                this.executeForInput(event, execution, 'keydown')
+            }
+            document.body.onkeyup = (event) => {
+                this.executeForInput(event, execution, 'keyup')
+            }
+        }
+        
         const period = 60000 / this.map.bpm / this.map.beatSplit
 
         const playNote = ()  => {
@@ -110,6 +138,8 @@ class Game {
                 noteIndex ++
             }, period)
         }
+
+        setInput()
 
         const music = new Howl({
             src: [`../../data/music/${ this.map.name }.mp3`],

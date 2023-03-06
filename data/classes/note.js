@@ -57,4 +57,12 @@ export class Note {
 
         }
     }
+
+    static judge(chart, type, lane, direction, index) {
+        const notes = chart.lanes[lane][direction]
+        const type = notes[index] === '*' ? 'none'
+        : notes[index] === 's' ? 'short'
+        : notes[index] === 'l' ? 'long'
+        : notes[index]
+    }
 }
