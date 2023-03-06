@@ -19,7 +19,7 @@ export class Note {
         }
 
         function createLong() {
-            if (index > 0 && notes[index - 1] == 'l') return
+            if (index > 0 && notes[index - 1] === 'l') return
             let length = 1
             while(notes[index] === 'l') {
                 length ++
