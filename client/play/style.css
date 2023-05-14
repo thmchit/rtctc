@@ -1,6 +1,6 @@
 .lane {
     width: 15%;
-    height: 100%;
+    height: var(--lane-size);
     background-color: #787882;
 
     position: absolute;
@@ -50,13 +50,14 @@
         0% { transform: translateY(0); }
         100% { transform: translateY(-100vh); }
     }
-    @keyframes down {
+    @keyframes /*down*/ move {
         0% { transform: translateY(0); }
         100% { transform: translateY(100vh); }
     }
 }
 
-.short {
+/* .short { */
+.normal {
     height: 3%;
     position: absolute;
     z-index: 2;
@@ -66,7 +67,7 @@
     animation: 2000ms linear up;
     bottom: -3%;
 }
-.short.down {
+/* .short.down { */ .normal {
     background-color: #38BAB7;
     animation: 2000ms linear down;
     top: -3%;
@@ -89,7 +90,7 @@
     0% {top: 0;}
     100% {height: 0; top: 0;}
 }
-@keyframes fade-down {
+@keyframes fade/*-down*/ {
     0% {bottom: 0;}
     100% {height: 0; bottom: 0;}
 }
