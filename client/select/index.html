@@ -7,12 +7,13 @@
     <title>리;듬칫듬칫</title>
     <link href="../common.css" rel="stylesheet">
     <link href="./style.css" rel="stylesheet">
-    <script src="../../node_modules/howler/dist/howler.core.min.js" defer></script>
-    <script type="module" defer>
+    <!--<script type="module" defer>
         import { Game } from '../../data/classes/game.js'
         window.game = new Game()
         window.onload = () => { window.game.displaySelection() }
-    </script>
+    </script>-->
+    <script src="../../node_modules/rhy-game/dist/rhy-game.js"></script>
+    <script src="../../data/mapList.js"></script>
 </head>
 <body>
     <div class="cover first"></div>
@@ -24,20 +25,20 @@
                 <div class="title"></div>
                 <div class="difficulty"></div>
             </div>
-            <div class="select previous" onclick="window.game.shiftSelection(-1)">이전 곡</div>
-            <div class="select next" onclick="window.game.shiftSelection(1)">다음 곡</div>
-            <div class="select cooperative mode" onclick="window.game.select('cooperative')">협동</div>
-            <div class="select competitive mode" onclick="window.game.select('competitive')">경쟁</div>
+            <div class="select previous" onclick="shiftSelection(-1)">이전 곡</div>
+            <div class="select next" onclick="shiftSelection(1)">다음 곡</div>
+            <div class="select cooperative mode" onclick="select('cooperative')">협동</div>
+            <div class="select competitive mode" onclick="select('competitive')">경쟁</div>
         </div>
         <div class="common-monitor">
             <div class="description">
                 <div class="title"></div>
                 <div class="difficulty"></div>
             </div>
-            <div class="select previous" onclick="window.game.shiftSelection(-1)">이전 곡</div>
-            <div class="select next" onclick="window.game.shiftSelection(1)">다음 곡</div>
-            <div class="select cooperative mode" onclick="window.game.select('cooperative')">협동</div>
-            <div class="select competitive mode" onclick="window.game.select('competitive')">경쟁</div>
+            <div class="select previous" onclick="shiftSelection(-1)">이전 곡</div>
+            <div class="select next" onclick="shiftSelection(1)">다음 곡</div>
+            <div class="select cooperative mode" onclick="select('cooperative')">협동</div>
+            <div class="select competitive mode" onclick="select('competitive')">경쟁</div>
         </div>  
         <div class="album current"></div>
         <div class="album innerdecoration"></div>
@@ -51,5 +52,75 @@
             <path d="m 0 0.5 a 0.05 0.05 90 0 0 1 0 l -0.325 0 a 0.05 0.05 90 0 1 -0.35 0 l -0.325 0 a 0.05 0.05 90 0 1 1 0 l -0.325 0 a 0.05 0.05 90 0 0 -0.35 0 l -0.325 0"></path>
         </clipPath>
     </svg>
+
+    <script>
+        let index = 0
+
+        function shiftSelection(diff) {
+            index += diff
+            displaySelection()
+        }
+
+        function displaySelection() {
+            const getSong = (i) => {
+                const length = mapList.length
+                return mapList[((i % length) + length) % length]
+            }
+
+            const currentSong = getSong(index)
+            const hasCooperativeMode = (currentSong.chart.cooperative !== undefined)
+            const hasCompetitiveMode = (currentSong.chart.competitive !== undefined)
+
+            const displayAlbumCover = () => {
+                const albums = document.getElementsByClassName('album')
+                const [ current, innerdecoration, outerdecoration, previous, next ]  = [ ...albums ]
+
+                current.style.backgroundImage
+                = `url("${currentSong.info.cover}")`
+                previous.style.backgroundImage
+                = `url("${getSong(index - 1).info.cover}")`
+                next.style.backgroundImage
+                = `url("${getSong(index + 1).info.cover}")`
+            }
+
+            const displayDescription = () => {
+                let titleContent = `${ currentSong.info.artist } - ${ currentSong.info.title } <br/>`
+                let difficultyContent = ''
+                if (hasCooperativeMode) {
+                    difficultyContent += `<font color='#38BAB7'>협동:</font> 난이도${ currentSong.info.difficulty.cooperative } `
+                }
+                if (hasCompetitiveMode) {
+                    difficultyContent += `<font color='#72A9F1'>경쟁:</font> 난이도${ currentSong.info.difficulty.competitive } `
+                }
+
+                for (let title of document.getElementsByClassName('title')) {
+                    title.innerHTML = titleContent
+                }
+                for (let difficulty of document.getElementsByClassName('difficulty')) {
+                    difficulty.innerHTML = difficultyContent
+                }
+            }
+
+            const displaySelectMode = () => {
+                for (let selectCoop of document.getElementsByClassName('cooperative')) {
+                    selectCoop.style.display = hasCooperativeMode ? 'block' : 'none'
+                }
+                for (let selectComp of document.getElementsByClassName('competitive')) {
+                    selectComp.style.display = hasCompetitiveMode ? 'block' : 'none'
+                }
+            }
+
+            displayAlbumCover()
+            displayDescription()
+            displaySelectMode()
+        }
+
+        function select(mode) {
+            if (mode === undefined) return
+            window.location.href = `../play/index.html?index=${ ((index % mapList.length) + mapList.length) % mapList.length }&mode=${ mode }`
+        }
+
+        displaySelection()
+    </script>
 </body>
 </html>
