@@ -26,12 +26,19 @@
             <div class="judgement-line"></div>
         </div>
         
-        <div id="lane0" class="lane _0"></div>
-        <div id="lane1" class="lane _1"></div>
-        <div id="lane2" class="lane _2"></div>
-        <div id="lane3" class="lane _3"></div>
-        <div id="lane4" class="lane _4"></div>
-        <div id="lane5" class="lane _5"></div>
+        <div class="lane _0 down"></div>
+        <div class="lane _1 down"></div>
+        <div class="lane _2 down"></div>
+        <div class="lane _3 down"></div>
+        <div class="lane _4 down"></div>
+        <div class="lane _5 down"></div>
+
+        <div class="lane _0 up"></div>
+        <div class="lane _1 up"></div>
+        <div class="lane _2 up"></div>
+        <div class="lane _3 up"></div>
+        <div class="lane _4 up"></div>
+        <div class="lane _5 up"></div>
     </div>
 
     <script>
@@ -49,16 +56,16 @@
                 laneDown4: document.getElementsByClassName('lane')[4],
                 laneDown5: document.getElementsByClassName('lane')[5],
 
-                laneUp0: document.getElementsByClassName('lane')[0],
-                laneUp1: document.getElementsByClassName('lane')[1],
-                laneUp2: document.getElementsByClassName('lane')[2],
-                laneUp3: document.getElementsByClassName('lane')[3],
-                laneUp4: document.getElementsByClassName('lane')[4],
-                laneUp5: document.getElementsByClassName('lane')[5]
+                laneUp0: document.getElementsByClassName('lane')[6],
+                laneUp1: document.getElementsByClassName('lane')[7],
+                laneUp2: document.getElementsByClassName('lane')[8],
+                laneUp3: document.getElementsByClassName('lane')[9],
+                laneUp4: document.getElementsByClassName('lane')[10],
+                laneUp5: document.getElementsByClassName('lane')[11]
             },
             notes: {
-                s: (lane, index) => new Normal(lane, index, { classNames: ['short', 'down'] }),
-                l: (lane, index) => new Long(lane, index, { classNames: ['long', 'down'] })
+                s: (lane, index) => new Normal(lane, index, { classNames: ['note', 'short'] }),
+                l: (lane, index) => new Long(lane, index, { classNames: ['note', 'long'] })
             },
             sizePerBeat: '12.5vh',
             laneSizeRatio: 8,
