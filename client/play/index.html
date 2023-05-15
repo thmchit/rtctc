@@ -7,12 +7,6 @@
     <title>리;듬칫듬칫</title>
     <link href="./../common.css" rel="stylesheet">
     <link href="./style.css" rel="stylesheet">
-    <!--<script src="../../node_modules/howler/dist/howler.core.min.js" defer></script>
-    <script src="../settings.js"></script>
-    <script type="module" defer>
-        import { Game } from '../../data/classes/game.js'
-        window.game = new Game()
-    </script>-->
     <script src="../../node_modules/rhy-game/dist/rhy-game.js"></script>
     <script src="../../data/mapList2.js"></script>
 </head>
@@ -43,31 +37,34 @@
 
     <script>
         function play() {
-            game.play(mapList[0], 'competitive')
+            const url = new URL(window.location.href)
+            const params = new URLSearchParams(url.search)
+            game.play(mapList[params.get('index')], params.get('mode'))
             document.body.removeAttribute('onkeydown')
         }
 
         const game = new Game({
             DOM: {
-                laneDown0: document.getElementsByClassName('lane')[0],
-                laneDown1: document.getElementsByClassName('lane')[1],
-                laneDown2: document.getElementsByClassName('lane')[2],
-                laneDown3: document.getElementsByClassName('lane')[3],
-                laneDown4: document.getElementsByClassName('lane')[4],
-                laneDown5: document.getElementsByClassName('lane')[5],
+                d0: document.getElementsByClassName('lane')[0],
+                d1: document.getElementsByClassName('lane')[1],
+                d2: document.getElementsByClassName('lane')[2],
+                d3: document.getElementsByClassName('lane')[3],
+                d4: document.getElementsByClassName('lane')[4],
+                d5: document.getElementsByClassName('lane')[5],
 
-                laneUp0: document.getElementsByClassName('lane')[6],
-                laneUp1: document.getElementsByClassName('lane')[7],
-                laneUp2: document.getElementsByClassName('lane')[8],
-                laneUp3: document.getElementsByClassName('lane')[9],
-                laneUp4: document.getElementsByClassName('lane')[10],
-                laneUp5: document.getElementsByClassName('lane')[11]
+                u5: document.getElementsByClassName('lane')[6],
+                u4: document.getElementsByClassName('lane')[7],
+                u3: document.getElementsByClassName('lane')[8],
+                u2: document.getElementsByClassName('lane')[9],
+                u1: document.getElementsByClassName('lane')[10],
+                u0: document.getElementsByClassName('lane')[11]
             },
             notes: {
                 s: (lane, index) => new Normal(lane, index, { classNames: ['note', 'short'] }),
                 l: (lane, index) => new Long(lane, index, { classNames: ['note', 'long'] })
             },
-            sizePerBeat: '12.5vh',
+            sizePerBeat: window.innerWidth > window.innerHeight
+                ? '12.5vh' : '12.5vw',
             laneSizeRatio: 8,
             delay: -400
         })
