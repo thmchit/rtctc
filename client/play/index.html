@@ -46,10 +46,10 @@
         }
     </script>
     <script>
-        function play() {
+        function play(index = 0) {
             const url = new URL(window.location.href)
             const params = new URLSearchParams(url.search)
-            game.play(mapList[params.get('index')], params.get('mode'))
+            game.play(mapList[params.get('index')], params.get('mode'), index)
             document.body.removeAttribute('onkeydown')
         }
 
