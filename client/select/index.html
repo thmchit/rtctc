@@ -76,18 +76,6 @@
             audio.currentTime = currentSong.info.design.chorus[0]
             var endTime = currentSong.info.design.chorus[1]
             audio.play()
-            var fadeout = setInterval(() => {
-                var fadePoint = endTime-3;
-                console.log(audio.currentTime)
-                console.log(audio.volume)
-                if ((audio.currentTime >= fadePoint) && (audio.volume !== 0)) {
-                    audio.volume -= 0.05
-                }
-                if (audio.volume < 0.1) {
-                    clearInterval(fadeout);
-                    audio.pause()
-                }
-            }, 200);
             document.getElementsByClassName('common-monitor')[0].style.background = `linear-gradient(to bottom, transparent, ${currentSong.info.design.color})`
             document.getElementsByClassName('common-monitor')[1].style.background = `linear-gradient(to bottom, transparent, ${currentSong.info.design.color})`
 
