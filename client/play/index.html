@@ -40,6 +40,11 @@
     </div>
 
     <script>
+        for (let option of settings) {
+            if (localStorage[option]) settings[option] = localStorage[option]
+        }
+    </script>
+    <script>
         function play() {
             const url = new URL(window.location.href)
             const params = new URLSearchParams(url.search)
