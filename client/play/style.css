@@ -38,6 +38,7 @@
     width: 100%;
     border-top: calc(0.6 * var(--unit)) solid #121212;
     border-bottom: calc(0.6 * var(--unit)) solid #121212;
+    opacity: 0.7;
 }
 
 @keyframes move {
@@ -58,11 +59,9 @@
 }
 .lane.down>.short {
     background-color: #38BAB7;
-    opacity: 0.5;
 }
 .lane.up>.short {
     background-color: #72A9F1;
-    opacity: 0.5
 }
 
 .long {
@@ -73,11 +72,9 @@
 }
 .lane.down>.long {
     background-color: #93D4D3;
-    opacity: 0.5;
 }
 .lane.up>.long {
     background-color: #B0CCF0;
-    opacity: 0.5;
 }
 
 .judgement-line {
