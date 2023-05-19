@@ -9,6 +9,7 @@
     <link href="./style.css" rel="stylesheet">
     <script src="../../node_modules/rhy-game/dist/rhy-game.js"></script>
     <script src="../../data/mapList.js"></script>
+    <script src="../settings.js"></script>
 </head>
 <body onkeydown="play()">
     <div id="monitor">
@@ -46,6 +47,14 @@
             document.body.removeAttribute('onkeydown')
         }
 
+        const keybind = {}
+        for (let i = 0; i < 6; i++) {
+            keybind[settings.keybind.down[i]] = 'd' + i
+        }
+        for (let i = 0; i < 6; i++) {
+            keybind[settings.keybind.up[i]] = 'u' + i
+        }
+
         const game = new Game({
             DOM: {
                 d0: document.getElementsByClassName('lane')[0],
@@ -66,21 +75,7 @@
                 combo: document.getElementsByClassName('combo')[0],
                 judgement: document.getElementsByClassName('judgement')[0],
             },
-            keybind: {
-                s: 'd0',
-                d: 'd1',
-                f: 'd2',
-                j: 'd3',
-                k: 'd4',
-                l: 'd5',
-
-                w: 'u0',
-                e: 'u1',
-                r: 'u2',
-                u: 'u3',
-                i: 'u4',
-                o: 'u5'
-            },
+            keybind,
             notes: {
                 s: (expectedTime) => new Normal(expectedTime, { classNames: ['note', 'short'] }),
                 l: (expectedTime, longRequiredData) => new Long(expectedTime,  longRequiredData, { classNames: ['note', 'long'] }),

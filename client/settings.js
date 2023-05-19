@@ -1,7 +1,7 @@
 const settings = {
-    keybinds: {
-        //Capital
-        up: ['W', 'E', 'R', 'U', 'I', 'O'],
-        down: ['S', 'D', 'F', 'J', 'K', 'L']
+    keybind: {
+        //Lower
+        down: ['s', 'd', 'f', 'j', 'k', 'l'],
+        up: ['w', 'e', 'r', 'u', 'i', 'o']
     }
 }
