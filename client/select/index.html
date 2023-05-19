@@ -113,6 +113,8 @@
             displayAlbumCover()
             displayDescription()
             displaySelectMode()
+
+            document.getElementsByClassName('common-moniter')[0].style.background = `linear-gradient(to bottom, transparent, ${currentSong.info.color}`
         }
 
         function select(mode) {
@@ -121,8 +123,6 @@
         }
 
         displaySelection()
-
-        document.getElementsByClassName('common-moniter')[0].style.background = `linear-gradient(to bottom, transparent, ${currentSong.info.color}`
     </script>
 </body>
 </html>
