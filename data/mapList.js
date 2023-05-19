@@ -13,7 +13,9 @@ const mapList = [
                 'competitive': 3
             },
 
-            cover: '../../data/images/album/LOVE DIVE.png'
+            cover: '../../data/images/album/LOVE DIVE.png',
+            chros: [41,58],
+            color : '#003464'
         },
         chart: {
             cooperative: [
@@ -125,7 +127,9 @@ const mapList = [
                 'competitive': 3
             },
 
-            cover: '../../data/images/album/다신 보지 않을거야..png'
+            cover: '../../data/images/album/다신 보지 않을거야..png',
+            chros: [41,58],
+            color : '#063339'
         },
         chart: {
             cooperative: [
@@ -177,7 +181,9 @@ const mapList = [
                 'competitive': 3
             },
 
-            cover: '../../data/images/album/염라.png'
+            cover: '../../data/images/album/염라.png',
+            chros: [41,58],
+            color : '#4b0401'
         },
         chart: {
             cooperative: [
