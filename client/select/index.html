@@ -14,6 +14,7 @@
     </script>-->
     <script src="../../node_modules/rhy-game/dist/rhy-game.js"></script>
     <script src="../../data/mapList.js"></script>
+    <script src="../settings.js"></script>
 </head>
 <body>
     <div class="cover first"></div>
@@ -129,6 +130,15 @@
         }
 
         displaySelection()
+
+        window.onkeydown = (event) => {
+            if (event.key === settings.keybind.down[0] || event.key === settings.keybind.up[0]
+                || event.keyCode === 37) shiftSelection(-1)
+            if (event.key === settings.keybind.down[2] || event.key === settings.keybind.up[2]) select('cooperative')
+            if (event.key === settings.keybind.down[3] || event.key === settings.keybind.up[3]) select('competitive')
+            if (event.key === settings.keybind.down[5] || event.key === settings.keybind.up[5]
+                || event.keyCode === 39) shiftSelection(1)
+        }
     </script>
 </body>
 </html>
