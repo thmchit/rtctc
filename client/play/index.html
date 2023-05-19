@@ -14,6 +14,9 @@
     <div id="monitor">
         <!--monitor 내의 다른 모든 element는 반드시 common-monitor 이후에 있어야함-->
         <div class="common-monitor">
+            <div class="score"></div>
+            <div class="combo"></div>
+            <div class="judgement"></div>
             <div class="judgement-line"></div>
         </div>
         <div class="common-monitor">
@@ -57,11 +60,30 @@
                 u3: document.getElementsByClassName('lane')[8],
                 u2: document.getElementsByClassName('lane')[9],
                 u1: document.getElementsByClassName('lane')[10],
-                u0: document.getElementsByClassName('lane')[11]
+                u0: document.getElementsByClassName('lane')[11],
+
+                score: document.getElementsByClassName('score')[0],
+                combo: document.getElementsByClassName('combo')[0],
+                judgement: document.getElementsByClassName('judgement')[0],
+            },
+            keybind: {
+                s: 'd0',
+                d: 'd1',
+                f: 'd2',
+                j: 'd3',
+                k: 'd4',
+                l: 'd5',
+
+                w: 'u0',
+                e: 'u1',
+                r: 'u2',
+                u: 'u3',
+                i: 'u4',
+                o: 'u5'
             },
             notes: {
-                s: (lane, index) => new Normal(lane, index, { classNames: ['note', 'short'] }),
-                l: (lane, index) => new Long(lane, index, { classNames: ['note', 'long'] })
+                s: (expectedTime) => new Normal(expectedTime, { classNames: ['note', 'short'] }),
+                l: (expectedTime, longRequiredData) => new Long(expectedTime,  longRequiredData, { classNames: ['note', 'short'] }),
             },
             sizePerBeat: window.innerWidth > window.innerHeight
                 ? '12.5vh' : '12.5vw',

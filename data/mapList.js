@@ -1,4 +1,4 @@
-/// <reference path="../node_modules/rhy-game/dist/rhy-game.js"/>
+/// <reference path="../node_modules/rhy-game/dist/rhy-game.d.ts"/>
 const mapList = [
     new Song({
         info: {
