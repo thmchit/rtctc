@@ -14,8 +14,10 @@ const mapList = [
             },
 
             cover: '../../data/images/album/LOVE DIVE.png',
-            chros: [41,58],
-            color : '#003464'
+            design: {
+                chorus: [41,58],
+                color : '#003464'
+            }
         },
         chart: {
             cooperative: [
@@ -128,8 +130,10 @@ const mapList = [
             },
 
             cover: '../../data/images/album/다신 보지 않을거야..png',
-            chros: [41,58],
-            color : '#063339'
+            design: {
+                chorus: [72,87],
+                color : '#063339'
+            }
         },
         chart: {
             cooperative: [
@@ -182,8 +186,10 @@ const mapList = [
             },
 
             cover: '../../data/images/album/염라.png',
-            chros: [41,58],
-            color : '#4b0401'
+            design: {
+                chorus: [57,73],
+                color : '#4b0401'
+            }
         },
         chart: {
             cooperative: [
