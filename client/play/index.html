@@ -15,12 +15,15 @@
     <div id="monitor">
         <!--monitor 내의 다른 모든 element는 반드시 common-monitor 이후에 있어야함-->
         <div class="common-monitor">
-            <div class="judgement-line"></div>
-        </div>
-        <div class="common-monitor">
             <div class="score"></div>
             <div class="combo"></div>
             <div class="judgement"></div>
+            <div class="judgement-line"></div>
+        </div>
+        <div class="common-monitor">
+            <div class="score">000000</div>
+            <div class="combo">0</div>
+            <div class="judgement">none</div>
             <div class="judgement-line"></div>
         </div>
         
@@ -44,15 +47,7 @@
             console.log(option)
             if (localStorage[option]) settings[option] = JSON.parse(localStorage[option])
         }
-    </script>
-    <script>
-        function play(index = 0) {
-            const url = new URL(window.location.href)
-            const params = new URLSearchParams(url.search)
-            game.play(mapList[params.get('index')], params.get('mode'), index)
-            document.body.removeAttribute('onkeydown')
-        }
-
+        
         const keybind = {}
         for (let i = 0; i < 6; i++) {
             keybind[settings.keybind.down[i]] = 'd' + i
@@ -61,7 +56,16 @@
             keybind[settings.keybind.up[i]] = 'u' + i
         }
 
-        const game = new Game({
+        const notes = {
+            s: (expectedTime) => new Normal(expectedTime, { classNames: ['note', 'short'] }),
+            l: (expectedTime, longRequiredData) => new Long(expectedTime,  longRequiredData, { classNames: ['note', 'long'] }),
+        }
+
+        const sizePerBeat = window.innerWidth > window.innerHeight
+            ? '12.5vh' : '12.5vw'
+    </script>
+    <script>
+        const cooperative = new Game({
             DOM: {
                 d0: document.getElementsByClassName('lane')[0],
                 d1: document.getElementsByClassName('lane')[1],
@@ -70,27 +74,91 @@
                 d4: document.getElementsByClassName('lane')[4],
                 d5: document.getElementsByClassName('lane')[5],
 
-                /*u5: document.getElementsByClassName('lane')[6],
+                u5: document.getElementsByClassName('lane')[6],
                 u4: document.getElementsByClassName('lane')[7],
                 u3: document.getElementsByClassName('lane')[8],
                 u2: document.getElementsByClassName('lane')[9],
                 u1: document.getElementsByClassName('lane')[10],
-                u0: document.getElementsByClassName('lane')[11],*/
+                u0: document.getElementsByClassName('lane')[11],
 
                 score: document.getElementsByClassName('score')[0],
                 combo: document.getElementsByClassName('combo')[0],
                 judgement: document.getElementsByClassName('judgement')[0],
             },
             keybind,
-            notes: {
-                s: (expectedTime) => new Normal(expectedTime, { classNames: ['note', 'short'] }),
-                l: (expectedTime, longRequiredData) => new Long(expectedTime,  longRequiredData, { classNames: ['note', 'long'] }),
+            notes,
+            sizePerBeat,
+            laneSizeRatio: 8,
+            delay: settings.delay,
+            update: (judgementData) => {
+                document.getElementsByClassName('score')[1].textContent = Math.round(judgementData.score).toString().padStart(6, '0')
+                document.getElementsByClassName('combo')[1].textContent = judgementData.combo
+                document.getElementsByClassName('judgement')[1].textContent = judgementData.lastJudgement
+            }
+        })
+
+        const competitive1 = new Game({
+            DOM: {
+                d0: document.getElementsByClassName('lane')[0],
+                d1: document.getElementsByClassName('lane')[1],
+                d2: document.getElementsByClassName('lane')[2],
+                d3: document.getElementsByClassName('lane')[3],
+                d4: document.getElementsByClassName('lane')[4],
+                d5: document.getElementsByClassName('lane')[5],
+
+                score: document.getElementsByClassName('score')[1],
+                combo: document.getElementsByClassName('combo')[1],
+                judgement: document.getElementsByClassName('judgement')[1],
             },
-            sizePerBeat: window.innerWidth > window.innerHeight
-                ? '12.5vh' : '12.5vw',
+            keybind,
+            notes,
+            sizePerBeat,
             laneSizeRatio: 8,
             delay: settings.delay
         })
+
+        const competitive2 = new Game({
+            DOM: {
+                u5: document.getElementsByClassName('lane')[6],
+                u4: document.getElementsByClassName('lane')[7],
+                u3: document.getElementsByClassName('lane')[8],
+                u2: document.getElementsByClassName('lane')[9],
+                u1: document.getElementsByClassName('lane')[10],
+                u0: document.getElementsByClassName('lane')[11],
+
+                score: document.getElementsByClassName('score')[0],
+                combo: document.getElementsByClassName('combo')[0],
+                judgement: document.getElementsByClassName('judgement')[0],
+            },
+            keybind,
+            notes,
+            sizePerBeat,
+            laneSizeRatio: 8,
+            delay: settings.delay
+        })
+    </script>
+    <script>
+        function playCoop(song, beat) {
+            cooperative.play(song, 'cooperative', beat)
+        }
+
+        function playComp(song, beat) {
+            competitive1.play(song, 'competitive', beat)
+            song.info.volume = 0
+            competitive2.play(song, 'competitive', beat)
+        }
+
+        function play(beat = 0) {
+            const url = new URL(window.location.href)
+            const params = new URLSearchParams(url.search)
+
+            const index = params.get('index')
+            const mode = params.get('mode')
+            if (mode === 'cooperative') playCoop(mapList[index], beat)
+            else if (mode === 'competitive') playComp(mapList[index], beat)
+
+            document.body.removeAttribute('onkeydown')
+        }
 
         window.onload = () => {
             play()
