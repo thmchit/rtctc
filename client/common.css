@@ -98,3 +98,19 @@ body {
     rotate: 180deg;
     top: 0;
 }
+
+.select {
+    width: calc(var(--unit) * 15);
+
+    text-align: center;
+    line-height: calc(var(--unit) * 5);
+
+    position: absolute;
+    bottom: 0;
+}
+.left {
+    left: calc(var(--unit) * 80);
+}
+.right {
+    left: calc(var(--unit) * 5);
+}
