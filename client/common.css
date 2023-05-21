@@ -1,5 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Poor+Story&display=swap');
 
+:root {
+    --unit: 1vw;
+}
+
+@media (max-aspect-ratio: 1/1) {
+    :root {
+        --unit: 1vw;
+    }
+}
+
+@media (min-aspect-ratio: 1/1) {
+    :root {
+        --unit: 1vh;
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -19,37 +35,24 @@ body {
 }
 
 #monitor {
+    width: calc(var(--unit) * 100);
+    height: calc(var(--unit) * 100);
     background-color: #121212;
 
+    font-size: calc(var(--unit) * 2.5);
     font-weight: bold;
     color: #eeeeee;
+
+    position: absolute;
 }
 @media (max-aspect-ratio: 1/1) {
     #monitor {
-        width: 100vw;
-        height: 100vw;
-
-        font-size: 2.5vw;
-
-        position: absolute;
         top: calc(50vh - 50vw);
-    }
-    .title {
-        font-size: 3.5vw;
     }
 }
 @media (min-aspect-ratio: 1/1) {
     #monitor {
-        width: 100vh;
-        height: 100vh;
-
-        font-size: 2.5vh;
-
-        position: absolute;
         left: calc(50vw - 50vh);
-    }
-    .title {
-        font-size: 3.5vh;
     }
 }
 
