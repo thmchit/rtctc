@@ -65,14 +65,6 @@
 
         const sizePerBeat = window.innerWidth > window.innerHeight
             ? '12.5vh' : '12.5vw'
-
-        const end = (judgementData) => {
-            localStorage['result'] = JSON.stringify({
-                index,
-                judgementData
-            })
-            window.location.href = '../result/index.html'
-        }
     </script>
     <script>
         const cooperative = new Game({
@@ -105,7 +97,15 @@
                 document.getElementsByClassName('combo')[1].textContent = judgementData.combo
                 document.getElementsByClassName('judgement')[1].textContent = judgementData.lastJudgement
             },
-            end
+            end: (judgementData) => {
+                localStorage['result0'] = JSON.stringify({
+                    index,
+                    mode,
+                    judgementData
+                })
+                localStorage['result1'] = localStorage['result0']
+                window.location.href = '../result/index.html'
+            }
         })
 
         const competitive1 = new Game({
@@ -126,7 +126,13 @@
             sizePerBeat,
             laneSizeRatio: 8,
             delay: settings.delay,
-            end
+            end: (judgementData) => {
+                localStorage['result1'] = JSON.stringify({
+                    index,
+                    mode,
+                    judgementData
+                })
+            }
         })
 
         const competitive2 = new Game({
@@ -147,7 +153,14 @@
             sizePerBeat,
             laneSizeRatio: 8,
             delay: settings.delay,
-            end
+            end: (judgementData) => {
+                localStorage['result0'] = JSON.stringify({
+                    index,
+                    mode,
+                    judgementData
+                })
+                window.location.href = '../result/index.html'
+            }
         })
     </script>
     <script>

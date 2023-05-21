@@ -50,47 +50,50 @@
     <script>
         let index, mode
 
-        function setValue(className, value) {
-            for (const DOM of document.getElementsByClassName(className)) {
-                DOM.innerHTML = value
-            }
+        function setValue(className, i, value) {
+            document.getElementsByClassName(className)[i].innerHTML = value
         }
 
-        window.onload = () => {
-            const result = JSON.parse(localStorage['result'])
+        function getResult(i) {
+            const result = JSON.parse(localStorage['result' + i])
             index = result.index
             mode = result.mode
             const data = result.judgementData
 
-            setValue('song', `${mapList[index].info.artist} - ${mapList[index].info.title}`)
-            setValue('score', Math.round(data.score).toString().padStart(6, '0'))
-            setValue('max-combo', data.maxCombo)
+            setValue('song', i, `${mapList[index].info.artist} - ${mapList[index].info.title}`)
+            setValue('score', i, Math.round(data.score).toString().padStart(6, '0'))
+            setValue('max-combo', i, data.maxCombo)
 
             const score = Math.round(data.score)
             if (score === 100000) {
-                setValue('rank', 'S')
+                setValue('rank', i, 'S')
             }
             else if (score > 90000) {
-                setValue('rank', 'A')
+                setValue('rank', i, 'A')
             }
             else if (score > 80000) {
-                setValue('rank', 'B')
+                setValue('rank', i, 'B')
             }
             else if (score > 70000) {
-                setValue('rank', 'B')
+                setValue('rank', i, 'B')
             }
             else {
-                setValue('rank', 'F')
+                setValue('rank', i, 'F')
             }
 
             const specific = data.judgements
-            setValue('specific', `
+            setValue('specific', i, `
                 perfect: ${specific.perfect} <br/>
                 great: ${specific.great} <br/>
                 good: ${specific.good} <br/>
                 bad: ${specific.bad} <br/>
                 miss: ${specific.miss} <br/>
             `)
+        }
+
+        window.onload = () => {
+            getResult(0)
+            getResult(1)
         }
     </script>
     <script>
@@ -102,7 +105,7 @@
             window.location.href = `../play/index.html?index=${index}&mode=${mode}`
         }
 
-        window.onkeydown = (event) => {
+        window.onkeyup = (event) => {
             if (event.key === settings.keybind.down[0] || event.key === settings.keybind.up[0]
                 || event.keyCode === 37) goSelect()
             if (event.key === settings.keybind.down[5] || event.key === settings.keybind.up[5]
