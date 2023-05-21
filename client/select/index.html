@@ -7,11 +7,6 @@
     <title>리;듬칫듬칫</title>
     <link href="../common.css" rel="stylesheet">
     <link href="./style.css" rel="stylesheet">
-    <!--<script type="module" defer>
-        import { Game } from '../../data/classes/game.js'
-        window.game = new Game()
-        window.onload = () => { window.game.displaySelection() }
-    </script>-->
     <script src="../../node_modules/rhy-game/dist/rhy-game.js"></script>
     <script src="../../data/mapList.js"></script>
     <script src="../settings.js"></script>
@@ -126,7 +121,7 @@
 
         function select(mode) {
             if (mode === undefined) return
-            window.location.href = `../play/index.html?index=${ ((index % mapList.length) + mapList.length) % mapList.length }&mode=${ mode }`
+            window.location.href = `../play/index.html?index=${((index % mapList.length) + mapList.length) % mapList.length}&mode=${mode}`
         }
 
         displaySelection()

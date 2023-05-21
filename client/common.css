@@ -109,8 +109,8 @@ body {
     bottom: 0;
 }
 .left {
-    left: calc(var(--unit) * 80);
+    left: calc(var(--unit) * 5);
 }
 .right {
-    left: calc(var(--unit) * 5);
+    left: calc(var(--unit) * 80);
 }

@@ -43,6 +43,8 @@
     </div>
 
     <script>
+        let index, mode
+
         for (let option of Object.keys(settings)) {
             console.log(option)
             if (localStorage[option]) settings[option] = JSON.parse(localStorage[option])
@@ -63,6 +65,14 @@
 
         const sizePerBeat = window.innerWidth > window.innerHeight
             ? '12.5vh' : '12.5vw'
+
+        const end = (judgementData) => {
+            localStorage['result'] = JSON.stringify({
+                index,
+                judgementData
+            })
+            window.location.href = '../result/index.html'
+        }
     </script>
     <script>
         const cooperative = new Game({
@@ -94,7 +104,8 @@
                 document.getElementsByClassName('score')[1].textContent = Math.round(judgementData.score).toString().padStart(6, '0')
                 document.getElementsByClassName('combo')[1].textContent = judgementData.combo
                 document.getElementsByClassName('judgement')[1].textContent = judgementData.lastJudgement
-            }
+            },
+            end
         })
 
         const competitive1 = new Game({
@@ -114,7 +125,8 @@
             notes,
             sizePerBeat,
             laneSizeRatio: 8,
-            delay: settings.delay
+            delay: settings.delay,
+            end
         })
 
         const competitive2 = new Game({
@@ -134,7 +146,8 @@
             notes,
             sizePerBeat,
             laneSizeRatio: 8,
-            delay: settings.delay
+            delay: settings.delay,
+            end
         })
     </script>
     <script>
@@ -152,8 +165,8 @@
             const url = new URL(window.location.href)
             const params = new URLSearchParams(url.search)
 
-            const index = params.get('index')
-            const mode = params.get('mode')
+            index = params.get('index')
+            mode = params.get('mode')
             if (mode === 'cooperative') playCoop(mapList[index], beat)
             else if (mode === 'competitive') playComp(mapList[index], beat)
 

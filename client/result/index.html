@@ -7,13 +7,107 @@
     <title>리;듬칫듬칫</title>
     <link href="./../common.css" rel="stylesheet">
     <link href="./style.css" rel="stylesheet">
-    <script src="../../node_modules/howler/dist/howler.core.min.js" defer></script>
+    <script src="../../node_modules/rhy-game/dist/rhy-game.js"></script>
+    <script src="../../data/mapList.js"></script>
+    <script src="../settings.js"></script>
 </head>
 <body>
     <div id="monitor">
         <!--monitor 내의 다른 모든 element는 반드시 common-monitor 이후에 있어야함-->
-        <div class="common-monitor"></div>
-        <div class="common-monitor"></div>
+        <div class="common-monitor">
+            <div class="song">artist - title</div>
+            <div class="score">100000</div>
+            <div class="max-combo">100</div>
+            <div class="rank">S</div>
+            <div class="specific">
+                perfect: 100 <br/>
+                great: 0 <br/>
+                good: 0 <br/>
+                bad: 0 <br/>
+                miss: 0
+            </div>
+            
+            <div class="select left" onclick="goSelect()">홈으로</div>
+            <div class="select right" onclick="replay()">다시 플레이</div>
+        </div>
+        <div class="common-monitor">
+            <div class="song">artist - title</div>
+            <div class="score">100000</div>
+            <div class="max-combo">100</div>
+            <div class="rank">S</div>
+            <div class="specific">
+                perfect: 100 <br/>
+                great: 0 <br/>
+                good: 0 <br/>
+                bad: 0 <br/>
+                miss: 0
+            </div>
+
+            <div class="select left" onclick="goSelect()">홈으로</div>
+            <div class="select right" onclick="replay()">다시 플레이</div>
+        </div>
     </div>
+    <script>
+        let index, mode
+
+        function setValue(className, value) {
+            for (const DOM of document.getElementsByClassName(className)) {
+                DOM.innerHTML = value
+            }
+        }
+
+        window.onload = () => {
+            const result = JSON.parse(localStorage['result'])
+            index = result.index
+            mode = result.mode
+            const data = result.judgementData
+
+            setValue('song', `${mapList[index].info.artist} - ${mapList[index].info.title}`)
+            setValue('score', Math.round(data.score).toString().padStart(6, '0'))
+            setValue('max-combo', data.maxCombo)
+
+            const score = Math.round(data.score)
+            if (score === 100000) {
+                setValue('rank', 'S')
+            }
+            else if (score > 90000) {
+                setValue('rank', 'A')
+            }
+            else if (score > 80000) {
+                setValue('rank', 'B')
+            }
+            else if (score > 70000) {
+                setValue('rank', 'B')
+            }
+            else {
+                setValue('rank', 'F')
+            }
+
+            const specific = data.judgements
+            setValue('specific', `
+                perfect: ${specific.perfect} <br/>
+                great: ${specific.great} <br/>
+                good: ${specific.good} <br/>
+                bad: ${specific.bad} <br/>
+                miss: ${specific.miss} <br/>
+            `)
+        }
+    </script>
+    <script>
+        function goSelect() {
+            window.location.href = '../select/index.html'
+        }
+
+        function replay() {
+            window.location.href = `../play/index.html?index=${index}&mode=${mode}`
+        }
+
+        window.onkeydown = (event) => {
+            if (event.key === settings.keybind.down[0] || event.key === settings.keybind.up[0]
+                || event.keyCode === 37) goSelect()
+            if (event.key === settings.keybind.down[5] || event.key === settings.keybind.up[5]
+                || event.keyCode === 39) replay()
+        }
+    </script>
 </body>
 </html>
