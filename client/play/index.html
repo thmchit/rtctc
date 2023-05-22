@@ -101,10 +101,26 @@
                 document.getElementsByClassName('combo')[1].textContent = judgementData.combo
                 document.getElementsByClassName('judgement')[1].textContent = judgementData.lastJudgement
 
-                /* if (judgementData.lastJudgement === 'bad') {
+                if (judgementData.lastJudgement === 'perfect') {
+                    document.getElementsByClassName('judgement')[0].style.color = 'gold'
+                    document.getElementsByClassName('judgement')[1].style.color = 'gold'
+                } 
+                else if (judgementData.lastJudgement === 'great') {
+                    document.getElementsByClassName('judgement')[0].style.color = 'deepskyblue'
+                    document.getElementsByClassName('judgement')[1].style.color = 'deepskyblue'
+                } 
+                else if (judgementData.lastJudgement === 'good') {
+                    document.getElementsByClassName('judgement')[0].style.color = 'lime'
+                    document.getElementsByClassName('judgement')[1].style.color = 'lime'
+                } 
+                else if (judgementData.lastJudgement === 'bad') {
                     document.getElementsByClassName('judgement')[0].style.color = 'red'
                     document.getElementsByClassName('judgement')[1].style.color = 'red'
-                } */
+                } 
+                else if (judgementData.lastJudgement === 'miss') {
+                    document.getElementsByClassName('judgement')[0].style.color = 'black'
+                    document.getElementsByClassName('judgement')[1].style.color = 'black'
+                }
             },
             end: (judgementData) => {
                 localStorage['result0'] = JSON.stringify({
@@ -137,6 +153,27 @@
             sizePerBeat,
             laneSizeRatio: 8,
             delay: settings.delay,
+            update: (judgementData) => {
+                document.getElementsByClassName('score')[1].textContent = Math.round(judgementData.score).toString().padStart(6, '0')
+                document.getElementsByClassName('combo')[1].textContent = judgementData.combo
+                document.getElementsByClassName('judgement')[1].textContent = judgementData.lastJudgement
+
+                if (judgementData.lastJudgement === 'perfect') {
+                    document.getElementsByClassName('judgement')[1].style.color = 'gold'
+                } 
+                else if (judgementData.lastJudgement === 'great') {
+                    document.getElementsByClassName('judgement')[1].style.color = 'deepskyblue'
+                } 
+                else if (judgementData.lastJudgement === 'good') {
+                    document.getElementsByClassName('judgement')[1].style.color = 'lime'
+                } 
+                else if (judgementData.lastJudgement === 'bad') {
+                    document.getElementsByClassName('judgement')[1].style.color = 'red'
+                } 
+                else if (judgementData.lastJudgement === 'bad') {
+                    document.getElementsByClassName('judgement')[1].style.color = 'black'
+                } 
+            },
             end: (judgementData) => {
                 localStorage['result1'] = JSON.stringify({
                     index,
@@ -164,6 +201,27 @@
             sizePerBeat,
             laneSizeRatio: 8,
             delay: settings.delay,
+            update: (judgementData) => {
+                document.getElementsByClassName('score')[0].textContent = Math.round(judgementData.score).toString().padStart(6, '0')
+                document.getElementsByClassName('combo')[0].textContent = judgementData.combo
+                document.getElementsByClassName('judgement')[0].textContent = judgementData.lastJudgement
+
+                if (judgementData.lastJudgement === 'perfect') {
+                    document.getElementsByClassName('judgement')[0].style.color = 'gold'
+                } 
+                else if (judgementData.lastJudgement === 'great') {
+                    document.getElementsByClassName('judgement')[0].style.color = 'deepskyblue'
+                } 
+                else if (judgementData.lastJudgement === 'good') {
+                    document.getElementsByClassName('judgement')[0].style.color = 'lime'
+                } 
+                else if (judgementData.lastJudgement === 'bad') {
+                    document.getElementsByClassName('judgement')[0].style.color = 'red'
+                } 
+                else if (judgementData.lastJudgement === 'miss') {
+                    document.getElementsByClassName('judgement')[0].style.color = 'black'
+                }
+            },
             end: (judgementData) => {
                 localStorage['result0'] = JSON.stringify({
                     index,
