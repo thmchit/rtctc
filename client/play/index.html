@@ -52,12 +52,13 @@
             if (localStorage[option]) settings[option] = JSON.parse(localStorage[option])
         }
         
-        const keybind = {}
+        const keybindDown = {}
         for (let i = 0; i < 6; i++) {
-            keybind[settings.keybind.down[i]] = 'd' + i
+            keybindDown[settings.keybind.down[i]] = 'd' + i
         }
+        const keybindUp = {}
         for (let i = 0; i < 6; i++) {
-            keybind[settings.keybind.up[i]] = 'u' + i
+            keybindUp[settings.keybind.up[i]] = 'u' + i
         }
 
         const notes = {
@@ -93,7 +94,7 @@
                 combo: document.getElementsByClassName('combo')[0],
                 judgement: document.getElementsByClassName('judgement')[0],
             },
-            keybind,
+            keybind: { ...keybindDown, ...keybindUp },
             notes,
             delay: settings.delay,
             sizePerBeat,
@@ -151,7 +152,7 @@
                 combo: document.getElementsByClassName('combo')[1],
                 judgement: document.getElementsByClassName('judgement')[1],
             },
-            keybind,
+            keybind: keybindDown,
             notes,
             delay: settings.delay,
             sizePerBeat,
@@ -201,7 +202,7 @@
                 combo: document.getElementsByClassName('combo')[0],
                 judgement: document.getElementsByClassName('judgement')[0],
             },
-            keybind,
+            keybind: keybindUp,
             notes,
             delay: settings.delay,
             sizePerBeat,
