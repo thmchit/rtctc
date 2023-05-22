@@ -70,6 +70,14 @@
             ? '12.5vh' : '12.5vw'
         
         const judgementPosition = 0.02
+
+        const color = {
+            perfect: 'gold',
+            great: 'deepskyblue',
+            good: 'lime',
+            bad: 'red',
+            miss: 'black'
+        }
     </script>
     <script>
         const cooperative = new Game({
@@ -105,26 +113,8 @@
                 document.getElementsByClassName('combo')[1].textContent = judgementData.combo
                 document.getElementsByClassName('judgement')[1].textContent = judgementData.lastJudgement
 
-                if (judgementData.lastJudgement === 'perfect') {
-                    document.getElementsByClassName('judgement')[0].style.color = 'gold'
-                    document.getElementsByClassName('judgement')[1].style.color = 'gold'
-                } 
-                else if (judgementData.lastJudgement === 'great') {
-                    document.getElementsByClassName('judgement')[0].style.color = 'deepskyblue'
-                    document.getElementsByClassName('judgement')[1].style.color = 'deepskyblue'
-                } 
-                else if (judgementData.lastJudgement === 'good') {
-                    document.getElementsByClassName('judgement')[0].style.color = 'lime'
-                    document.getElementsByClassName('judgement')[1].style.color = 'lime'
-                } 
-                else if (judgementData.lastJudgement === 'bad') {
-                    document.getElementsByClassName('judgement')[0].style.color = 'red'
-                    document.getElementsByClassName('judgement')[1].style.color = 'red'
-                } 
-                else if (judgementData.lastJudgement === 'miss') {
-                    document.getElementsByClassName('judgement')[0].style.color = 'black'
-                    document.getElementsByClassName('judgement')[1].style.color = 'black'
-                }
+                document.getElementsByClassName('judgement')[0].style.color = color[judgementData.lastJudgement]
+                document.getElementsByClassName('judgement')[1].style.color = color[judgementData.lastJudgement]
             },
             end: (judgementData) => {
                 localStorage['result0'] = JSON.stringify({
@@ -163,21 +153,7 @@
                 document.getElementsByClassName('combo')[1].textContent = judgementData.combo
                 document.getElementsByClassName('judgement')[1].textContent = judgementData.lastJudgement
 
-                if (judgementData.lastJudgement === 'perfect') {
-                    document.getElementsByClassName('judgement')[1].style.color = 'gold'
-                } 
-                else if (judgementData.lastJudgement === 'great') {
-                    document.getElementsByClassName('judgement')[1].style.color = 'deepskyblue'
-                } 
-                else if (judgementData.lastJudgement === 'good') {
-                    document.getElementsByClassName('judgement')[1].style.color = 'lime'
-                } 
-                else if (judgementData.lastJudgement === 'bad') {
-                    document.getElementsByClassName('judgement')[1].style.color = 'red'
-                } 
-                else if (judgementData.lastJudgement === 'bad') {
-                    document.getElementsByClassName('judgement')[1].style.color = 'black'
-                } 
+                document.getElementsByClassName('judgement')[1].style.color = color[judgementData.lastJudgement]
             },
             judgementPosition,
             end: (judgementData) => {
@@ -213,21 +189,7 @@
                 document.getElementsByClassName('combo')[0].textContent = judgementData.combo
                 document.getElementsByClassName('judgement')[0].textContent = judgementData.lastJudgement
 
-                if (judgementData.lastJudgement === 'perfect') {
-                    document.getElementsByClassName('judgement')[0].style.color = 'gold'
-                } 
-                else if (judgementData.lastJudgement === 'great') {
-                    document.getElementsByClassName('judgement')[0].style.color = 'deepskyblue'
-                } 
-                else if (judgementData.lastJudgement === 'good') {
-                    document.getElementsByClassName('judgement')[0].style.color = 'lime'
-                } 
-                else if (judgementData.lastJudgement === 'bad') {
-                    document.getElementsByClassName('judgement')[0].style.color = 'red'
-                } 
-                else if (judgementData.lastJudgement === 'miss') {
-                    document.getElementsByClassName('judgement')[0].style.color = 'black'
-                }
+                document.getElementsByClassName('judgement')[0].style.color = color[judgementData.lastJudgement]
             },
             judgementPosition,
             end: (judgementData) => {
