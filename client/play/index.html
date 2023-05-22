@@ -67,6 +67,8 @@
 
         const sizePerBeat = window.innerWidth > window.innerHeight
             ? '12.5vh' : '12.5vw'
+        
+        const judgementPosition = 0.02
     </script>
     <script>
         const cooperative = new Game({
@@ -93,9 +95,10 @@
             },
             keybind,
             notes,
+            delay: settings.delay,
             sizePerBeat,
             laneSizeRatio: 8,
-            delay: settings.delay,
+            judgementPosition,
             update: (judgementData) => {
                 document.getElementsByClassName('score')[1].textContent = Math.round(judgementData.score).toString().padStart(6, '0')
                 document.getElementsByClassName('combo')[1].textContent = judgementData.combo
@@ -134,9 +137,10 @@
             },
             keybind,
             notes,
+            delay: settings.delay,
             sizePerBeat,
             laneSizeRatio: 8,
-            delay: settings.delay,
+            judgementPosition,
             end: (judgementData) => {
                 localStorage['result1'] = JSON.stringify({
                     index,
@@ -161,9 +165,10 @@
             },
             keybind,
             notes,
+            delay: settings.delay,
             sizePerBeat,
             laneSizeRatio: 8,
-            delay: settings.delay,
+            judgementPosition,
             end: (judgementData) => {
                 localStorage['result0'] = JSON.stringify({
                     index,

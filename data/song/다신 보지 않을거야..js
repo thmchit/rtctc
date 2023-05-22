@@ -12,6 +12,7 @@ mapList.push(new Song({
             'cooperative': 3,
             'competitive': 3
         },
+        delay: 0,
 
         cover: '../../data/images/album/다신 보지 않을거야..png',
         background: '../../data/images/album/다신 보지 않을거야..png',

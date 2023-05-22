@@ -4,5 +4,5 @@ const settings = {
         down: ['s', 'd', 'f', 'j', 'k', 'l'],
         up: ['w', 'e', 'r', 'u', 'i', 'o']
     },
-    delay: -400
+    delay: -450
 }
