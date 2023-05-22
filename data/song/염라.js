@@ -15,6 +15,7 @@ mapList.push(new Song({
         },
 
         cover: '../../data/images/album/염라.png',
+        background: '../../data/images/album/염라.png',
         design: {
             chorus: [57,73],
             color : '#4b0401'

@@ -14,6 +14,7 @@ mapList.push(new Song({
         },
 
         cover: '../../data/images/album/LOVE DIVE.png',
+        background: '../../data/images/album/LOVE DIVE.png',
         design: {
             chorus: [41,58],
             color : '#003464'

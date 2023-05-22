@@ -14,6 +14,7 @@ mapList.push(new Song({
         },
 
         cover: '../../data/images/album/다신 보지 않을거야..png',
+        background: '../../data/images/album/다신 보지 않을거야..png',
         design: {
             chorus: [72,87],
             color : '#063339'
