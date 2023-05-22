@@ -66,16 +66,40 @@
 
             const score = Math.round(data.score)
             if (score === 100000) {
+                setValue('rank', i, 'SSS')
+            }
+            else if (score === 95000) {
                 setValue('rank', i, 'S')
             }
             else if (score > 90000) {
-                setValue('rank', i, 'A')
+                setValue('rank', i, 'A+')
+            }
+            else if (score > 87500) {
+                setValue('rank', i, 'A0')
+            }
+            else if (score > 85000) {
+                setValue('rank', i, 'A-')
+            }
+            else if (score > 82500) {
+                setValue('rank', i, 'B+')
             }
             else if (score > 80000) {
-                setValue('rank', i, 'B')
+                setValue('rank', i, 'B0')
+            }
+            else if (score > 77500) {
+                setValue('rank', i, 'B-')
+            }
+            else if (score > 75000) {
+                setValue('rank', i, 'C+')
             }
             else if (score > 70000) {
-                setValue('rank', i, 'B')
+                setValue('rank', i, 'C0')
+            }
+            else if (score > 65000) {
+                setValue('rank', i, 'C-')
+            }
+            else if (score > 60000) {
+                setValue('rank', i, 'D')
             }
             else {
                 setValue('rank', i, 'F')

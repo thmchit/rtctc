@@ -26,6 +26,8 @@
             <div class="judgement">none</div>
             <div class="judgement-line"></div>
         </div>
+
+        <div id="background"></div>
         
         <div class="lane _0 down"></div>
         <div class="lane _1 down"></div>
@@ -96,6 +98,11 @@
                 document.getElementsByClassName('score')[1].textContent = Math.round(judgementData.score).toString().padStart(6, '0')
                 document.getElementsByClassName('combo')[1].textContent = judgementData.combo
                 document.getElementsByClassName('judgement')[1].textContent = judgementData.lastJudgement
+
+                /* if (judgementData.lastJudgement === 'bad') {
+                    document.getElementsByClassName('judgement')[0].style.color = 'red'
+                    document.getElementsByClassName('judgement')[1].style.color = 'red'
+                } */
             },
             end: (judgementData) => {
                 localStorage['result0'] = JSON.stringify({

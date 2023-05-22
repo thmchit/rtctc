@@ -1,9 +1,20 @@
+#background {
+    width: calc(var(--unit) * 90);
+    height: calc(var(--unit) * 100);
+    background-position: center;
+
+    position: absolute;
+    left: calc(var(--unit) * 5);
+}
+
 .lane {
     width: 15%;
     height: var(--lane-size);
     background-color: #343434;
     border-left: calc(0.3 * var(--unit)) solid #121212;
     border-right: calc(0.3 * var(--unit)) solid #121212;
+
+    opacity: 0.93;
 
     position: absolute;
 }
@@ -68,4 +79,8 @@
 
     position: absolute;
     bottom: 10%;
+}
+
+.score {
+
 }
