@@ -12,7 +12,7 @@ mapList.push(new Song({
             'cooperative': 3,
             'competitive': 3
         },
-        startFrom: 1100,
+        delay: 350,
 
         cover: '../../data/images/album/I AM.png',
         background: '../../data/images/album/I AM.png',
