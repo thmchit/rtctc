@@ -12,7 +12,7 @@ mapList.push(new Song({
             'cooperative': 3,
             'competitive': 3
         },
-        delay: -400,
+        delay: 400,
 
         cover: '../../data/images/album/LOVE DIVE.png',
         background: '../../data/images/album/LOVE DIVE.png',
