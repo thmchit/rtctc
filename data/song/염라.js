@@ -11,7 +11,7 @@ mapList.push(new Song({
         split: 16,
         difficulty: {
             'cooperative': 3,
-            'competitive': 4
+            'competitive': 5
         },
         delay: -510,
 
