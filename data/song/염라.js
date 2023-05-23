@@ -13,7 +13,7 @@ mapList.push(new Song({
             'cooperative': 3,
             'competitive': 4
         },
-        delay: 300,
+        delay: -510,
 
         cover: '../../data/images/album/염라.png',
         background: '../../data/images/album/염라.png',
