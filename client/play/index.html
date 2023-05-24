@@ -46,6 +46,20 @@
         <div class="lane _3 up"></div>
         <div class="lane _4 up"></div>
         <div class="lane _5 up"></div>
+
+        <div id="effect-d0" class="pressed _0"></div>
+        <div id="effect-d1" class="pressed _1"></div>
+        <div id="effect-d2" class="pressed _2"></div>
+        <div id="effect-d3" class="pressed _3"></div>
+        <div id="effect-d4" class="pressed _4"></div>
+        <div id="effect-d5" class="pressed _5"></div>
+
+        <div id="effect-u5" class="pressed _0 up"></div>
+        <div id="effect-u4" class="pressed _1 up"></div>
+        <div id="effect-u3" class="pressed _2 up"></div>
+        <div id="effect-u2" class="pressed _3 up"></div>
+        <div id="effect-u1" class="pressed _4 up"></div>
+        <div id="effect-u0" class="pressed _5 up"></div>
     </div>
 
     <script>
@@ -75,6 +89,15 @@
         
         const judgementPosition = 0.02
 
+        const input = {
+            keydown: (game, laneName) => {
+                document.getElementById(`effect-${laneName}`).style.display = 'block'
+            },
+            keyup: (game, laneName) => {
+                document.getElementById(`effect-${laneName}`).style.display = 'none'
+            }
+        }
+
         const color = {
             perfect: 'gold',
             great: 'deepskyblue',
@@ -100,11 +123,7 @@
                 u1: document.getElementsByClassName('lane')[10],
                 u0: document.getElementsByClassName('lane')[11],
 
-                background: document.getElementById('background'),
-
-                score: document.getElementsByClassName('score')[0],
-                combo: document.getElementsByClassName('combo')[0],
-                judgement: document.getElementsByClassName('judgement')[0],
+                background: document.getElementById('background')
             },
             keybind: { ...keybindDown, ...keybindUp },
             notes,
@@ -112,22 +131,29 @@
             sizePerBeat,
             laneSizeRatio: 8,
             judgementPosition,
-            update: (judgementData) => {
-                document.getElementsByClassName('score')[1].textContent = Math.round(judgementData.score).toString().padStart(6, '0')
-                document.getElementsByClassName('combo')[1].textContent = judgementData.combo
-                document.getElementsByClassName('judgement')[1].textContent = judgementData.lastJudgement
+            event: {
+                input,
+                judge: (game, judgementData) => {
+                    document.getElementsByClassName('score')[0].textContent = Math.round(judgementData.score).toString().padStart(6, '0')
+                    document.getElementsByClassName('combo')[0].textContent = judgementData.combo
+                    document.getElementsByClassName('judgement')[0].textContent = judgementData.lastJudgement
 
-                document.getElementsByClassName('judgement')[0].style.color = color[judgementData.lastJudgement]
-                document.getElementsByClassName('judgement')[1].style.color = color[judgementData.lastJudgement]
-            },
-            end: (judgementData) => {
-                localStorage['result0'] = JSON.stringify({
-                    index,
-                    mode,
-                    judgementData
-                })
-                localStorage['result1'] = localStorage['result0']
-                window.location.href = '../result/index.html'
+                    document.getElementsByClassName('score')[1].textContent = Math.round(judgementData.score).toString().padStart(6, '0')
+                    document.getElementsByClassName('combo')[1].textContent = judgementData.combo
+                    document.getElementsByClassName('judgement')[1].textContent = judgementData.lastJudgement
+
+                    document.getElementsByClassName('judgement')[0].style.color = color[judgementData.lastJudgement]
+                    document.getElementsByClassName('judgement')[1].style.color = color[judgementData.lastJudgement]
+                },
+                end: (game, judgementData) => {
+                    localStorage['result0'] = JSON.stringify({
+                        index,
+                        mode,
+                        judgementData
+                    })
+                    localStorage['result1'] = localStorage['result0']
+                    window.location.href = '../result/index.html'
+                }
             }
         })
 
@@ -140,11 +166,7 @@
                 d4: document.getElementsByClassName('lane')[4],
                 d5: document.getElementsByClassName('lane')[5],
 
-                background: document.getElementById('background'),
-
-                score: document.getElementsByClassName('score')[1],
-                combo: document.getElementsByClassName('combo')[1],
-                judgement: document.getElementsByClassName('judgement')[1],
+                background: document.getElementById('background')
             },
             keybind: keybindDown,
             notes,
@@ -152,20 +174,22 @@
             sizePerBeat,
             laneSizeRatio: 8,
             judgementPosition,
-            update: (judgementData) => {
-                document.getElementsByClassName('score')[1].textContent = Math.round(judgementData.score).toString().padStart(6, '0')
-                document.getElementsByClassName('combo')[1].textContent = judgementData.combo
-                document.getElementsByClassName('judgement')[1].textContent = judgementData.lastJudgement
+            event: {
+                input,
+                judge: (game, judgementData) => {
+                    document.getElementsByClassName('score')[1].textContent = Math.round(judgementData.score).toString().padStart(6, '0')
+                    document.getElementsByClassName('combo')[1].textContent = judgementData.combo
+                    document.getElementsByClassName('judgement')[1].textContent = judgementData.lastJudgement
 
-                document.getElementsByClassName('judgement')[1].style.color = color[judgementData.lastJudgement]
-            },
-            judgementPosition,
-            end: (judgementData) => {
-                localStorage['result1'] = JSON.stringify({
-                    index,
-                    mode,
-                    judgementData
-                })
+                    document.getElementsByClassName('judgement')[1].style.color = color[judgementData.lastJudgement]
+                },
+                end: (game, judgementData) => {
+                    localStorage['result1'] = JSON.stringify({
+                        index,
+                        mode,
+                        judgementData
+                    })
+                }
             }
         })
 
@@ -176,11 +200,7 @@
                 u3: document.getElementsByClassName('lane')[8],
                 u2: document.getElementsByClassName('lane')[9],
                 u1: document.getElementsByClassName('lane')[10],
-                u0: document.getElementsByClassName('lane')[11],
-
-                score: document.getElementsByClassName('score')[0],
-                combo: document.getElementsByClassName('combo')[0],
-                judgement: document.getElementsByClassName('judgement')[0],
+                u0: document.getElementsByClassName('lane')[11]
             },
             keybind: keybindUp,
             notes,
@@ -188,21 +208,23 @@
             sizePerBeat,
             laneSizeRatio: 8,
             judgementPosition,
-            update: (judgementData) => {
-                document.getElementsByClassName('score')[0].textContent = Math.round(judgementData.score).toString().padStart(6, '0')
-                document.getElementsByClassName('combo')[0].textContent = judgementData.combo
-                document.getElementsByClassName('judgement')[0].textContent = judgementData.lastJudgement
+            event: {
+                input,
+                judge: (game, judgementData) => {
+                    document.getElementsByClassName('score')[0].textContent = Math.round(judgementData.score).toString().padStart(6, '0')
+                    document.getElementsByClassName('combo')[0].textContent = judgementData.combo
+                    document.getElementsByClassName('judgement')[0].textContent = judgementData.lastJudgement
 
-                document.getElementsByClassName('judgement')[0].style.color = color[judgementData.lastJudgement]
-            },
-            judgementPosition,
-            end: (judgementData) => {
-                localStorage['result0'] = JSON.stringify({
-                    index,
-                    mode,
-                    judgementData
-                })
-                window.location.href = '../result/index.html'
+                    document.getElementsByClassName('judgement')[0].style.color = color[judgementData.lastJudgement]
+                },
+                end: (game, judgementData) => {
+                    localStorage['result0'] = JSON.stringify({
+                        index,
+                        mode,
+                        judgementData
+                    })
+                    window.location.href = '../result/index.html'
+                }
             }
         })
     </script>

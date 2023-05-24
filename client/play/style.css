@@ -24,16 +24,27 @@
 
     position: absolute;
 }
-.lane.up {
-    background-color: transparent;
+.up {
     transform: rotate(180deg);
 }
-.lane._0 { left: 5%; }
-.lane._1 { left: 20%; }
-.lane._2 { left: 35%; }
-.lane._3 { left: 50%; }
-.lane._4 { left: 65%; }
-.lane._5 { left: 80%; }
+.lane.up {
+    background-color: transparent;
+}
+._0 { left: 5%; }
+._1 { left: 20%; }
+._2 { left: 35%; }
+._3 { left: 50%; }
+._4 { left: 65%; }
+._5 { left: 80%; }
+
+.pressed {
+    width: 15%;
+    height: var(--lane-size);
+    background: linear-gradient(rgba(0, 0, 0, 0) 85%, rgba(255, 255, 255, 0.4));
+
+    display: none;
+    position: absolute;
+}
 
 .note {
     width: 100%;
