@@ -19,7 +19,7 @@ mapList.push(new Song({
         background: '../../data/images/album/I AM.png',
         design: {
             chorus: [48.7,67],
-            color : '#EFEFEF'
+            color : '#565656'
         }
     },
     chart: {

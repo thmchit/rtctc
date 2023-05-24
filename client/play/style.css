@@ -7,6 +7,12 @@
     left: calc(var(--unit) * 5);
 }
 
+.count {
+    text-align: center;
+    font-size: 65px;
+    margin-top: 10px;
+}
+
 .lane {
     width: 15%;
     height: var(--lane-size);
