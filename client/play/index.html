@@ -11,19 +11,23 @@
     <script src="../../data/mapList.js"></script>
     <script src="../settings.js"></script>
 </head>
-<body onkeydown="play()">
+<body>
     <div id="monitor">
         <!--monitor 내의 다른 모든 element는 반드시 common-monitor 이후에 있어야함-->
         <div class="common-monitor">
             <div class="score"></div>
             <div class="combo"></div>
             <div class="judgement"></div>
+
+            <div class="count"></div>
             <div class="judgement-line"></div>
         </div>
         <div class="common-monitor">
             <div class="score">000000</div>
             <div class="combo">0</div>
             <div class="judgement">none</div>
+
+            <div class="count"></div>
             <div class="judgement-line"></div>
         </div>
 
@@ -214,11 +218,6 @@
         }
 
         function play(beat = 0) {
-            const url = new URL(window.location.href)
-            const params = new URLSearchParams(url.search)
-
-            index = params.get('index')
-            mode = params.get('mode')
             if (mode === 'cooperative') playCoop(mapList[index], beat)
             else if (mode === 'competitive') playComp(mapList[index], beat)
 
@@ -226,7 +225,25 @@
         }
 
         window.onload = () => {
-            play()
+            const url = new URL(window.location.href)
+            const params = new URLSearchParams(url.search)
+
+            index = params.get('index')
+            mode = params.get('mode')
+            timeLeft = 4
+            
+            document.getElementById('background').style.backgroundImage = `url('${mapList[index].info.background}')`
+            const count = setInterval(() => {
+                timeLeft--
+                document.getElementsByClassName('count')[0].textContent = timeLeft
+                document.getElementsByClassName('count')[1].textContent = timeLeft
+                if (timeLeft === 0) {
+                    play()
+                    document.getElementsByClassName('count')[0].textContent = ''
+                    document.getElementsByClassName('count')[1].textContent = ''
+                    clearInterval(count)
+                }
+            }, 1000)
         }
     </script>
 </body>
