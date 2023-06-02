@@ -80,8 +80,8 @@
         }
 
         const notes = {
-            s: (expectedTime) => new Normal(expectedTime, { classNames: ['note', 'short'] }),
-            l: (expectedTime, longRequiredData) => new Long(expectedTime,  longRequiredData, { classNames: ['note', 'long'] }),
+            s: (expectedTime) => new Tap(expectedTime, { classNames: ['note', 'short'] }),
+            l: (expectedTime, longRequiredData) => new Hold(expectedTime,  longRequiredData, { classNames: ['note', 'long'] }),
         }
 
         const sizePerBeat = window.innerWidth > window.innerHeight
